@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+	     HorizontalOptions="Center"
+	     VerticalOptions="End"
+	     xmlns:ffImage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	     IsLightDismissEnabled="False"
+	     Size="400,400"
+	     xmlns:toolkit="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             x:Class="Smartmoveapp.Views.Popups.FolderOptions">
+
+ <toolkit:Popup.Resources>
+  <Style TargetType="Button" x:Key="PopupButton">
+   <Setter  Property="FontFamily" Value="PoppinsLight">
+   </Setter>
+   <Setter Property="FontSize" Value="13" > </Setter>
+   <Setter Property="TextColor" Value="{StaticResource themecolorf}"></Setter>
+   <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+
+  </Style>
+  <Style TargetType="ImageButton" x:Key="PopupImageButton">
+   <Setter Property="WidthRequest" Value="28" ></Setter>
+   <Setter Property="HeightRequest" Value="28"></Setter>
+   <Setter Property="Margin" Value="10"></Setter>
+   <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+
+  </Style>
+ </toolkit:Popup.Resources>
+ <StackLayout HorizontalOptions="Center" Margin="10">
+  <StackLayout Orientation="Horizontal" Spacing="20" Margin="10">
+   <ffImage:CachedImage WidthRequest="50" Margin="10" HeightRequest="50" HorizontalOptions="Center"  Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.foldericon.png}"></ffImage:CachedImage>
+   <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+    <Label  Text="{Binding Path=Folder.FolderName}"  FontFamily="PoppinsBlack" FontSize="17" TextColor="{StaticResource themecolorf}" HorizontalOptions="Center" HorizontalTextAlignment="Center"></Label>
+    <Label  Text="{Binding Path=Folder.Created_Dt}" FontFamily="PoppinsLight" FontSize="13" TextColor="{StaticResource themecolore}" HorizontalOptions="Center" HorizontalTextAlignment="Center"></Label>
+    <Label  Text="{Binding Path=Folder.Documents.Count,StringFormat='{0} Documents'}" FontFamily="PoppinsLight" FontSize="13" TextColor="{StaticResource themecolore}" HorizontalOptions="Center" HorizontalTextAlignment="Center"></Label>
+   </StackLayout>
+   
+   
+  </StackLayout>
+  <StackLayout Orientation="Horizontal">
+   <ImageButton Clicked="Rename" Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.solid_renameicon.png}"  Style="{StaticResource PopupImageButton}" ></ImageButton >
+   <Button Text="rename folder"  Style="{StaticResource PopupButton}" Clicked="Rename"></Button>
+  </StackLayout>
+  <StackLayout Orientation="Horizontal" IsVisible="{Binding Folder.LockCode ,Converter={xct:IsNotNullOrEmptyConverter}}">
+   <ImageButton CornerRadius="20" BackgroundColor="{StaticResource themecolorb}" Clicked="ChangePassCode" Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.solid_lock.png}"  Style="{StaticResource PopupImageButton}"   ></ImageButton >
+   <Button Text="change passcode"  Style="{StaticResource PopupButton}" Clicked="ChangePassCode"></Button>
+  </StackLayout>
+  <BoxView Margin="15,0,15,0"  Color="{StaticResource themecolore}" WidthRequest="90" Style="{StaticResource Divider}"></BoxView>
+  <StackLayout Orientation="Horizontal">
+   <ImageButton Clicked="Delete" Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.solid_trash.png}"  VerticalOptions="End" Style="{StaticResource PopupImageButton}"  ></ImageButton >
+   <Button Text="delete folder" Style="{StaticResource PopupButton}" Clicked="Delete" VerticalOptions="End"></Button>
+  </StackLayout>
+  <BoxView Margin="15,0,15,0" Color="{StaticResource themecolore}"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+  <StackLayout Orientation="Horizontal">
+   <ImageButton Clicked="ToggleFavourite" Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.solid_staricon.png}" Style="{StaticResource PopupImageButton}"  ></ImageButton >
+   <Button Text="remove  from favourites" Style="{StaticResource PopupButton}"  IsVisible="{Binding Path=Folder.IsFavourite}"  Clicked="ToggleFavourite"  ></Button>
+   <Button Text="add to favourites" Style="{StaticResource PopupButton}" VerticalOptions="End"  IsVisible="{Binding Path=Folder.IsFavourite,Converter={xct:InvertedBoolConverter}}"  Clicked="ToggleFavourite"></Button>
+  </StackLayout>
+  <BoxView Margin="15,0,15,0" Color="{StaticResource themecolore}"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+  <StackLayout Orientation="Horizontal" IsVisible="{Binding Folder.LockCode ,Converter={xct:IsNullOrEmptyConverter}}">
+   <ImageButton Clicked="LockFolder" Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.solid_lock.png}"  Style="{StaticResource PopupImageButton}"  ></ImageButton >
+   <Button Text="lock folder"  Style="{StaticResource PopupButton}" Clicked="LockFolder" VerticalOptions="End"></Button>
+  </StackLayout>
+  <BoxView  IsVisible="{Binding Folder.LockCode ,Converter={xct:IsNullOrEmptyConverter}}" Margin="15,0,15,0" Color="{StaticResource themecolore}"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+  <Button  HorizontalOptions="Center"  FontSize="14"  Text="Close" BackgroundColor="{StaticResource themecolora}" TextColor="{StaticResource themecolorf}" FontFamily="PoppinsBlack" Clicked="CloseOptions"></Button>
+ </StackLayout>
+</toolkit:Popup>

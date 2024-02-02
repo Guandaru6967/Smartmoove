@@ -1,0 +1,494 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:local="clr-namespace:Smartmoveapp"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	     xmlns:chips="clr-namespace:Xamarin.Forms.Chips;assembly=Xamarin.Forms.Chips"
+                xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+	   xmlns:controls="clr-namespace:Smartmoveapp.Controls"
+             BackgroundColor="{StaticResource themecolora}"
+	   NavigationPage.IconColor="{StaticResource themecolorf}"
+             x:Class="Smartmoveapp.ContractDetailPage">
+ <NavigationPage.TitleView>
+  <Grid  ColumnDefinitions=".5*,.5*" Grid.Column="0">
+   <Button Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" TextColor="{StaticResource themecolorf}" FontFamily="Poppins"  FontSize="20" Text="Vertrage" TextTransform="Lowercase"></Button>
+   <Button   Grid.Row="0" Grid.Column="1"   BackgroundColor="Transparent"  TextColor="{StaticResource themecolorf}" FontFamily="Poppins"  FontSize="20" Text="Bearbeiten" TextTransform="Lowercase"></Button>
+  </Grid>
+ </NavigationPage.TitleView>
+ <ContentPage.Resources>
+        <Style TargetType="Button" x:Key="IconButton">
+            <Setter Property="TextColor" Value ="{StaticResource themecolorf}">
+
+            </Setter>
+            <Setter Property="TextTransform" Value ="None">
+
+            </Setter>
+            <Setter Property="FontFamily" Value ="materialicon">
+
+            </Setter>
+            <Setter Property="FontSize" Value ="30">
+
+            </Setter>
+            <Setter Property="BackgroundColor" Value ="{StaticResource themecolora}">
+
+            </Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="LabelButton">
+            <Setter Property="TextColor" Value ="{StaticResource themecolorf}">
+
+            </Setter>
+            <Setter Property="TextTransform" Value ="None">
+
+            </Setter>
+            <Setter Property="FontFamily" Value ="Poppins">
+
+            </Setter>
+            <Setter Property="FontSize" Value ="30">
+
+            </Setter>
+            <Setter Property="BackgroundColor" Value ="{StaticResource themecolora}">
+
+            </Setter>
+        </Style>
+        <ControlTemplate x:Key="IconButtonControlTemplate">
+            <Grid xct:CornerRadiusEffect.CornerRadius="5" BackgroundColor="{StaticResource themecolora}" BindingContext="{Binding Source={RelativeSource Mode=TemplatedParent}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40">
+
+                    </ColumnDefinition>
+                    <ColumnDefinition Width="*" >
+
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Style="{StaticResource IconButton}" FontSize="{Binding IconFontSize}" Text="{Binding ButtonIcon}"></Button>
+                <Label Grid.Column="1" FontFamily="Poppins"  HorizontalTextAlignment="Start" Padding="-5,0,0,0" TextColor="{StaticResource themecolorf}" VerticalTextAlignment="Center"  WidthRequest="100"  Text="{Binding ButtonText}" FontSize="{Binding TextFontSize}"></Label>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="ImageData">
+            <StackLayout  HorizontalOptions="Center">
+                <Grid Grid.ColumnSpan="2" >
+                    <Label Margin="15,10,0,5" Grid.Column="0" FontSize="13" FontFamily="Poppins" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="{Binding key }"></Label>
+                    <Label Margin="15,10,0,5"  Grid.Column="1" FontSize="13" FontFamily="Poppins" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="{Binding value }"></Label>
+                </Grid>
+                <StackLayout>
+                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                </StackLayout>
+            </StackLayout>
+        </ControlTemplate>
+        <ControlTemplate x:Key="Value">
+            <StackLayout  HorizontalOptions="Center">
+                <Grid Grid.ColumnSpan="2" >
+                    <Label Margin="15,10,0,5" Grid.Column="0" FontSize="13" FontFamily="Poppins" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="{Binding key }"></Label>
+                    <Label Margin="15,10,0,5"  Grid.Column="1" FontSize="13" FontFamily="Poppins" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="{Binding value }"></Label>
+                </Grid>
+                <StackLayout>
+                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                </StackLayout>
+            </StackLayout>
+        </ControlTemplate>
+        <ControlTemplate x:Key="IconData">
+            <StackLayout  HorizontalOptions="Center">
+                <Grid Grid.ColumnSpan="2">
+                    <Label Margin="15,10,0,5" Grid.Column="0" FontSize="13" FontFamily="Poppins" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="{Binding key }"></Label>
+                    <Label Margin="15,10,0,5"  Grid.Column="1" FontSize="13" FontFamily="Poppins" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="{Binding value }"></Label>
+                </Grid>
+                <StackLayout>
+                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                </StackLayout>
+            </StackLayout>
+        </ControlTemplate>
+        
+        <ControlTemplate x:Key="LabelView" >
+            <StackLayout HorizontalOptions="Center">
+                <Grid Grid.ColumnSpan="2" >
+                    <Label 
+                           VerticalOptions="Center"
+                        
+                           HorizontalOptions="Center"
+                          HorizontalTextAlignment="End"
+                           VerticalTextAlignment="Center"
+                           Grid.Column="0" FontSize="13" FontFamily="Poppins" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="{TemplateBinding Key }"></Label>
+                    <Label   Grid.Column="1"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                             HeightRequest="40"
+                             BindingContext="{TemplateBinding Path=Parent.BindingContext}"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontSize="13" FontFamily="Poppins" TextTransform="None" TextColor="{StaticResource themecolorc}" 
+                             Text="{TemplateBinding Path=Parent.BindingContent.LabelText}"></Label>
+                </Grid>
+                <StackLayout>
+                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                </StackLayout>
+            </StackLayout>
+        </ControlTemplate>
+        <ControlTemplate x:Key="DropDownView" >
+            <StackLayout HorizontalOptions="Center">
+                <Grid Grid.ColumnSpan="2" >
+                    <Label  Grid.Column="0" 
+                           FontSize="13" 
+                           
+                            VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontFamily="Poppins" 
+                            
+                           TextTransform="None" 
+                           TextColor="{StaticResource themecolorc}" 
+                           Text="{TemplateBinding Key }"></Label>
+                    <Button BackgroundColor="{StaticResource themecolora}" 
+                            Grid.Column="1"
+                            FontSize="13"
+                            FontFamily="Poppins" 
+                            VerticalOptions="Start"
+                            HorizontalOptions="Center"
+                            TextTransform="None" TextColor="{StaticResource themecolorc}" Text="{TemplateBinding  Text }"></Button>
+                </Grid>
+                <StackLayout VerticalOptions="Center">
+                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                </StackLayout>
+            </StackLayout>
+        </ControlTemplate>
+        <ControlTemplate x:Key="DateView" >
+            <StackLayout HorizontalOptions="Center">
+                <Grid Grid.ColumnSpan="2" >
+                    <Label  Grid.Column="0" 
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontSize="13" FontFamily="Poppins" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="{TemplateBinding Key }"></Label>
+                    <Button BackgroundColor="{StaticResource themecolora}"
+                            VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           HeightRequest="40"
+                           
+                            Grid.Column="1" FontSize="13" FontFamily="Poppins" TextTransform="None" 
+                            TextColor="{StaticResource themecolorc}" 
+                            Text="{TemplateBinding  Time ,StringFormat='{1:mm:hh:MM-dd-yy}'}">
+                        <Button.GestureRecognizers>
+                            <TapGestureRecognizer Command="{TemplateBinding Parent.ToPage}"></TapGestureRecognizer>
+                        </Button.GestureRecognizers>
+                    </Button>
+                </Grid>
+                <StackLayout>
+                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                </StackLayout>
+            </StackLayout>
+        </ControlTemplate>
+        <ControlTemplate x:Key="EntryView" >
+            <StackLayout HorizontalOptions="Center">
+                <Grid Grid.ColumnSpan="2" >
+                    <Label Margin="15,10,0,5" Grid.Column="0" FontSize="13" FontFamily="Poppins" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="{TemplateBinding Key }"></Label>
+                    <Entry PlaceholderColor="{StaticResource themecolore}" HorizontalOptions="Center" WidthRequest="300" BackgroundColor="{StaticResource themecolora}" Margin="15,10,0,5"  Grid.Column="1" FontSize="13" FontFamily="Poppins" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="{TemplateBinding  TextLabel }"></Entry>
+                </Grid>
+                <StackLayout>
+                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                </StackLayout>
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout  BackgroundColor="{StaticResource themecolorb}">
+                 <FlexLayout Direction="Column" BackgroundColor="{StaticResource themecolord}" >
+                        <ContentView xct:CornerRadiusEffect.CornerRadius="30">
+                            <ImageButton Margin="10" xct:CornerRadiusEffect.CornerRadius="15"
+                                   Aspect="AspectFit" 
+                                         BackgroundColor="#0000"
+                                         Clicked="OpenDoc"
+                                   xct:ShadowEffect.Color="Black"
+                                   xct:ShadowEffect.Opacity="0"
+                                   xct:ShadowEffect.OffsetX="5" 
+                                   xct:ShadowEffect.OffsetY="5" 
+                                   Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.DocImage.jpg}"
+                                   ></ImageButton>
+                        </ContentView>
+                        <Grid  HorizontalOptions="Center" VerticalOptions="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*">
+
+                                </ColumnDefinition>
+                                <ColumnDefinition Width="*">
+
+                                </ColumnDefinition>
+                                <ColumnDefinition Width="*">
+
+                                </ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <controls:IconButton HorizontalOptions="Center" Margin="10" Grid.Column="0" ControlTemplate="{StaticResource IconButtonControlTemplate}" IconFontSize="30" TextFontSize="12"  ButtonIcon="calendar_month" ButtonText="Endes des Vertrags Unbekannt">
+
+                            </controls:IconButton>
+                            <controls:IconButton Margin="10" Grid.Column="1" ControlTemplate="{StaticResource IconButtonControlTemplate}" IconFontSize="30" TextFontSize="12"  ButtonIcon="euro" ButtonText="Keine Kosten
+Gespeichert">
+
+                            </controls:IconButton>
+                            <controls:IconButton Margin="10" Grid.Column="2" ControlTemplate="{StaticResource IconButtonControlTemplate}" IconFontSize="30" TextFontSize="12"  ButtonIcon="notifications" ButtonText="Erinnerung Deaktiviert">
+
+                            </controls:IconButton>
+                        </Grid>
+
+                    </FlexLayout>
+                    <StackLayout BackgroundColor="{StaticResource themecolorb}">
+
+
+      <Label Padding="15,10,0,0" FontSize="20" TextDecorations="Underline"  HorizontalTextAlignment="Center" FontFamily="PoppinsBlack" FontAttributes="Bold" TextColor="{StaticResource themecolorc}">
+       Information
+      </Label>
+      <ContentView Margin="20,0,20,0" xct:CornerRadiusEffect.CornerRadius="20" BackgroundColor="{StaticResource themecolora}">
+                        </ContentView>
+                                  <StackLayout BackgroundColor="{StaticResource themecolora}" Margin="20,0,20,0" xct:CornerRadiusEffect.CornerRadius="20">
+                            <StackLayout  HorizontalOptions="Center">
+                                <Grid Grid.ColumnSpan="2" >
+                                    <Label 
+                           VerticalOptions="Center"
+                        
+                           HorizontalOptions="Center"
+                          HorizontalTextAlignment="End"
+                           VerticalTextAlignment="Center"
+                           Grid.Column="0" FontSize="13" FontFamily="PoppinsBlack" TextTransform="None" 
+                                        
+                                        TextColor="{StaticResource themecolorc}" Text="Business"></Label>
+                                    <Button   Grid.Column="1"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                             HeightRequest="40"
+                                              BackgroundColor="{StaticResource themecolora}"
+                                            
+                           FontSize="13" FontFamily="Poppins" TextTransform="None"
+                                             TextColor="{StaticResource themecolorc}" 
+                             Text="{Binding Name}"></Button>
+                                </Grid>
+                                <StackLayout>
+                                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout  HorizontalOptions="Center">
+                                <Grid Grid.ColumnSpan="2" >
+                                    <Label 
+                           VerticalOptions="Center"
+                        
+                           HorizontalOptions="Center"
+                          HorizontalTextAlignment="End"
+                           VerticalTextAlignment="Center"
+                           Grid.Column="0" FontSize="13" FontFamily="PoppinsBlack" TextTransform="None" 
+                                        
+                                        TextColor="{StaticResource themecolorc}" Text="Contract Type"></Label>
+                                    <Label   Grid.Column="1"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                             HeightRequest="40"
+                                              BackgroundColor="{StaticResource themecolora}"
+                                           HorizontalTextAlignment="Center"
+                                             VerticalTextAlignment="Center"
+                           FontSize="13" FontFamily="Poppins" TextTransform="None"
+                                             TextColor="{StaticResource themecolorc}" 
+                             Text="{Binding  ContractDetail.InfoSubject}"></Label>
+                                </Grid>
+                                <StackLayout>
+                                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                                </StackLayout>
+                            </StackLayout>
+                            <!-- <views:LabelControlView ControlTemplate="{StaticResource LabelView}" Key="Contract Type" LabelText="{}"></views:LabelControlView>-->
+                      
+                            <StackLayout HorizontalOptions="Center">
+                                <Grid Grid.ColumnSpan="2" >
+                                    <Label  Grid.Column="0" 
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontSize="13" FontFamily="PoppinsBlack" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="Start of Contract"></Label>
+                                    <Button BackgroundColor="{StaticResource themecolora}"
+                            VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           HeightRequest="40"
+                            Grid.Column="1" FontSize="13" FontFamily="Poppins" TextTransform="None" 
+                            TextColor="{StaticResource themecolorc}" 
+                                            Clicked="SelectStartDate"
+                            Text="{Binding Path=ContractDetail.StartDate,StringFormat='{1:mm:hh:MM-dd-yy}'}">
+                                        
+                                    </Button>
+                                </Grid>
+                                <StackLayout>
+                                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                                </StackLayout>
+                            </StackLayout>
+                            
+                            <StackLayout HorizontalOptions="Center">
+                                <Grid Grid.ColumnSpan="2" >
+                                    <Label  Grid.Column="0" 
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontSize="13" FontFamily="PoppinsBlack" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="End of Contract"></Label>
+                                    <Button BackgroundColor="{StaticResource themecolora}"
+                            VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           HeightRequest="40"
+                           Clicked="SelectEndDate"
+                            Grid.Column="1" FontSize="13" FontFamily="Poppins" TextTransform="None" 
+                            TextColor="{StaticResource themecolorc}" 
+                            Text="{Binding Path=ContractDetail.EndDate,StringFormat='{1:mm:hh:MM-dd-yy}'}">
+
+                                    </Button>
+                                </Grid>
+                                <StackLayout>
+                                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                                </StackLayout>
+                            </StackLayout>
+
+                          
+
+                            <StackLayout HorizontalOptions="Center">
+                                <Grid Grid.ColumnSpan="2" >
+                                    <Label  Grid.Column="0" 
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontSize="13" FontFamily="PoppinsBlack" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="Auto Renew"></Label>
+                                    
+                                    <Picker 
+                                        Grid.Column="1"
+                                        HorizontalOptions="Center"
+                                        HorizontalTextAlignment="Center"
+                                        BackgroundColor="{StaticResource themecolora}"  xct:IconTintColorEffect.TintColor="{StaticResource themecolora}" 
+                                        Title="Auto Renew" 
+                                        TitleColor="{StaticResource themecolora}"
+                                        FontFamily="Poppins" 
+                                        FontSize="13" 
+                                        TextTransform="None" 
+                                        TextColor="{StaticResource themecolorc}" ></Picker>
+                                </Grid>
+                                <StackLayout>
+                                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout  HorizontalOptions="Center">
+                                <Grid Grid.ColumnSpan="2" >
+                                    <Label 
+                           VerticalOptions="Center"
+                        
+                           HorizontalOptions="Center"
+                          HorizontalTextAlignment="End"
+                           VerticalTextAlignment="Center"
+                           Grid.Column="0" FontSize="13" FontFamily="PoppinsBlack" TextTransform="None" 
+                                        
+                                        TextColor="{StaticResource themecolorc}" Text="Customer Number"></Label>
+                                    <Label   Grid.Column="1"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                             HeightRequest="40"
+                                              BackgroundColor="{StaticResource themecolora}"
+                                           HorizontalTextAlignment="Center"
+                                             VerticalTextAlignment="Center"
+                           FontSize="13" FontFamily="Poppins" TextTransform="None"
+                                             TextColor="{StaticResource themecolorc}" 
+                             Text="{Binding  Path=ContractDetail.CustomerNr}"></Label>
+                                </Grid>
+                                <StackLayout>
+                                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout  HorizontalOptions="Center">
+                                <Grid Grid.ColumnSpan="2" >
+                                    <Label 
+                           VerticalOptions="Center"
+                        
+                           HorizontalOptions="Center"
+                          HorizontalTextAlignment="End"
+                           VerticalTextAlignment="Center"
+                           Grid.Column="0" FontSize="13" FontFamily="PoppinsBlack" TextTransform="None" 
+                                        
+                                        TextColor="{StaticResource themecolorc}" Text="Contract Number"></Label>
+                                    <Label   Grid.Column="1"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                             HeightRequest="40"
+                                              BackgroundColor="{StaticResource themecolora}"
+                                           HorizontalTextAlignment="Center"
+                                             VerticalTextAlignment="Center"
+                           FontSize="13" FontFamily="Poppins" TextTransform="None"
+                                             TextColor="{StaticResource themecolorc}" 
+                             Text="{Binding  ContractDetail.ContractNr}"></Label>
+                                </Grid>
+                                <StackLayout>
+                                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                                </StackLayout>
+                            </StackLayout>
+
+
+                        </StackLayout>
+      <Label Padding="15,10,0,0" FontSize="20" TextDecorations="Underline"  HorizontalTextAlignment="Center" FontFamily="PoppinsBlack" FontAttributes="Bold" TextColor="{StaticResource themecolorc}">
+       Billing
+      </Label>
+      <StackLayout BackgroundColor="{StaticResource themecolora}" Margin="20,0,20,0" xct:CornerRadiusEffect.CornerRadius="20">
+                            <StackLayout HorizontalOptions="Center">
+                                <Grid Grid.ColumnSpan="2" >
+                                    <Label  Grid.Column="0" 
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontSize="15" FontFamily="PoppinsBlack" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="Billing Period">
+                                        
+                                    </Label>
+
+                                    <Entry 
+                                        Grid.Column="1"
+                                        HorizontalOptions="Center"
+                                        HorizontalTextAlignment="Center"
+                                        BackgroundColor="{StaticResource themecolora}"  xct:IconTintColorEffect.TintColor="{StaticResource themecolora}" 
+                                       Text="Optional"
+                                        FontFamily="Poppins" 
+                                        FontSize="15" 
+                                        TextTransform="None" 
+                                        TextColor="{StaticResource themecolorc}" 
+                                     ></Entry>
+                                </Grid>
+                                <StackLayout>
+                                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+      <Label Padding="15,10,0,0" FontSize="20" TextDecorations="Underline"  HorizontalTextAlignment="Center" FontFamily="PoppinsBlack" FontAttributes="Bold" TextColor="{StaticResource themecolorc}">
+       Notes
+      </Label>
+      <Entry FontFamily="PoppinsBlack" Text="{Binding Notes}" FontSize="15" HorizontalTextAlignment="Start" BackgroundColor="{StaticResource themecolora}" HeightRequest="50" Margin="20" xct:CornerRadiusEffect.CornerRadius="20"></Entry>
+
+      <Label Padding="15,10,0,0" FontSize="20" TextDecorations="Underline"  HorizontalTextAlignment="Center" FontFamily="PoppinsBlack" FontAttributes="Bold" TextColor="{StaticResource themecolorc}">
+       Tags
+      </Label>
+
+      <CollectionView BackgroundColor="Transparent" Margin="10" HeightRequest="100" ItemsSource="{Binding Tags}">
+       <CollectionView.ItemsLayout>
+        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"></LinearItemsLayout>
+       </CollectionView.ItemsLayout>
+       <CollectionView.ItemTemplate>
+        <DataTemplate>
+         <StackLayout>
+	<StackLayout.Resources>
+
+	</StackLayout.Resources>
+	<chips:Chip  Text="{Binding .,StringFormat='#{0}'}" ForceWidthToAtLeastHeight="False"  HeightRequest="11"  BackgroundColor="{StaticResource themecolora}" TextColor="{StaticResource themecolorf}" CloseButtonImageStyle="{DynamicResource ChipImageButton  }"   CloseButtonImage="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.cancel.png}"   BorderColor="{StaticResource themecolora}"></chips:Chip>
+         </StackLayout>
+        </DataTemplate>
+       </CollectionView.ItemTemplate>
+
+      </CollectionView>
+      <Button Text="+Add Tags" Clicked="AddTag" BackgroundColor="Transparent" TextColor="Black" HorizontalOptions="Center" FontFamily="PoppinsBlack"  ></Button>
+
+     </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

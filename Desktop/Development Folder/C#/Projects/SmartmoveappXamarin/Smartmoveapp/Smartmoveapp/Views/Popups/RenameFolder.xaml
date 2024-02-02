@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	     Size="350,200"
+	     xct:ShadowEffect.Color="Black"
+	     xct:ShadowEffect.OffsetX="5"
+	     xct:ShadowEffect.OffsetY="5"
+	     xct:ShadowEffect.Opacity=".5"
+	     VerticalOptions="Center"
+	   xmlns:toolkit="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+	     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Smartmoveapp.Views.Popups.RenameFolder">
+
+ <StackLayout>
+  <Image Margin="5" HorizontalOptions="Center" Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.foldericon.png}" WidthRequest="50 " HeightRequest="50"></Image>
+  <Entry Text="{Binding Name}" FontFamily="PoppinsBlack"
+                VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Center"
+	     WidthRequest="160" TextColor="{StaticResource themecolorf}"
+                HorizontalOptions="CenterAndExpand" />
+  <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+   <Button HorizontalOptions="Start" Text="Ok" Clicked="Rename" FontFamily="PoppinsBlack" FontSize="12" BorderWidth="5" TextColor="{StaticResource themecolorf}" BackgroundColor="{StaticResource themecolora}" BorderColor="{StaticResource themecolorf}">
+
+   </Button>
+   <Button HorizontalOptions="End" Text="Cancel" Clicked="Cancel" BackgroundColor="{StaticResource themecolorb}" FontSize="12"  TextColor="{StaticResource themecolorf}"></Button>
+  </StackLayout>
+ </StackLayout>
+</toolkit:Popup>

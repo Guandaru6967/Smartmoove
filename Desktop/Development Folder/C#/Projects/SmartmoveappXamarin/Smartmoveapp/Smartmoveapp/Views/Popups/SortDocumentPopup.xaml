@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	 Size="300,300"
+	 VerticalOptions="End"
+	   xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+	   xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Smartmoveapp.Views.Popups.SortDocumentPopup">
+
+ <StackLayout Spacing="10" Margin="10">
+  <StackLayout.Resources>
+   <Style x:Key="doctypelabel" TargetType="Label">
+
+    <Setter Property="FontSize" Value="15"></Setter>
+    <Setter Property="FontFamily" Value="Poppins"></Setter>
+    <Setter Property="TextColor" Value="{StaticResource themecolorf}"></Setter>
+    <Setter Property="HorizontalOptions" Value="Center"></Setter>
+    <Setter Property="VerticalOptions" Value="Center"></Setter>
+
+   </Style>
+
+  </StackLayout.Resources>
+  <BoxView
+           Margin="20,16,20,5"
+           BackgroundColor="{StaticResource themecolorf}"
+           CornerRadius="2"
+           HeightRequest="5"
+           HorizontalOptions="Center"
+           WidthRequest="80" />
+
+  <Label
+           Padding="20,0,20,0"
+           FontAttributes="Bold"
+           FontSize="18"
+	   HorizontalOptions="Center"
+	   HorizontalTextAlignment="Center"
+	   FontFamily="PoppinsBlack"
+VerticalOptions="Center"
+TextDecorations="Underline"
+	   TextColor="{StaticResource themecolorf}"
+           Text="Sort Folders" />
+
+  <!-- Name Sort-->
+  <Grid ColumnDefinitions=".5*,.5*"  HorizontalOptions="Center">
+   <Label Grid.Column="0"  Text="Name" Style="{DynamicResource doctypelabel}" ></Label>
+   <CheckBox  CheckedChanged="NameCheckedChanged" Grid.Column="1"   BackgroundColor="Transparent" Color="{StaticResource themecolorf}" FlowDirection="LeftToRight" IsChecked="{Binding Path=Name}"></CheckBox>
+  </Grid>
+  <!-- Date Sort-->
+  <Grid ColumnDefinitions=".5*,.5*"  HorizontalOptions="Center">
+   <Label Grid.Column="0" Text="Date" Style="{DynamicResource doctypelabel }" ></Label>
+   <CheckBox CheckedChanged="DateCheckedChanged" Grid.Column="1" BackgroundColor="Transparent" Color="{StaticResource themecolorf}"   FlowDirection="LeftToRight" IsChecked="{Binding Path=Date}"></CheckBox>
+  </Grid>
+  <Grid ColumnDefinitions=".5*,.5*"  HorizontalOptions="Center">
+   <Label Grid.Column="0" Text="Normal Order" Style="{DynamicResource doctypelabel }" IsVisible="{Binding IsReverse}" ></Label>
+   <Label Grid.Column="0" Text="Reverse Order" Style="{DynamicResource doctypelabel }" IsVisible="{Binding IsReverse,Converter={toolkit:InvertedBoolConverter}}" ></Label>
+   <CheckBox   Grid.Column="1" BackgroundColor="Transparent"  Color="{StaticResource themecolorf}" FlowDirection="LeftToRight" IsChecked="{Binding Path=IsReverse}"></CheckBox>
+  </Grid>
+  <Button  toolkit:ShadowEffect.Color="Black" toolkit:ShadowEffect.OffsetX="5" toolkit:ShadowEffect.OffsetY="5" toolkit:ShadowEffect.Opacity=".5" Margin="20" BackgroundColor="{StaticResource themecolora}" WidthRequest="200" Clicked="SortDocuments" Text="Done" FontFamily="PoppinsBlack" BorderColor="{StaticResource themecolorf}" BorderWidth="4" FontSize="15" TextColor="{StaticResource themecolorf}" HorizontalOptions="Center" ></Button>
+ </StackLayout>
+</xct:Popup>

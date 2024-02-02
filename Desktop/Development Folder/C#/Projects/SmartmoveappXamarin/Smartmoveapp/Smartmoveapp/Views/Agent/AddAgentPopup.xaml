@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+	 Size="400,800"
+	 BackgroundColor="{StaticResource themecolora}"
+	 xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+	 toolkit:ShadowEffect.Color="Black"
+	 toolkit:ShadowEffect.Opacity=".6"
+	 toolkit:ShadowEffect.OffsetX="10"
+	 toolkit:ShadowEffect.OffsetY="10"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	   xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             x:Class="Smartmoveapp.Views.Agent.AddAgentPopup">
+
+ <StackLayout>
+  <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+  <CollectionView SelectionMode="Single" SelectionChanged="AgentSelectionChanged" ItemsSource="{Binding .}">
+   <CollectionView.ItemsLayout>
+    <LinearItemsLayout Orientation="Vertical">
+     
+    </LinearItemsLayout>
+   </CollectionView.ItemsLayout>
+   <CollectionView.ItemTemplate>
+    <DataTemplate>
+     <StackLayout Spacing="10">
+      <VisualStateManager.VisualStateGroups>
+       <VisualStateGroup x:Name="CommonStates">
+        <VisualState x:Name="Selected">
+         <VisualState.Setters>
+	<Setter Property="BackgroundColor" Value="{StaticResource themecolorb}"></Setter>
+	
+         </VisualState.Setters>
+        </VisualState>
+        <VisualState x:Name="Normal">
+         <VisualState.Setters>
+	<Setter Property="BackgroundColor" Value="Transparent"></Setter>
+         </VisualState.Setters>
+        </VisualState>
+
+       </VisualStateGroup>
+      </VisualStateManager.VisualStateGroups>
+      <Label  FontSize="18" FontFamily="PoppinsBlack"  TextColor="{StaticResource themecolorf}" TextType="Text"  Text="{Binding  Name}">
+       
+       
+      </Label>
+      
+      <Label FontFamily="Poppins" FontSize="14"  TextColor="{StaticResource themecolore}"  Text="Agent Department">
+       
+      </Label>
+      
+     </StackLayout>
+    </DataTemplate>
+   </CollectionView.ItemTemplate>
+  </CollectionView>
+ </StackLayout>
+</xct:Popup>

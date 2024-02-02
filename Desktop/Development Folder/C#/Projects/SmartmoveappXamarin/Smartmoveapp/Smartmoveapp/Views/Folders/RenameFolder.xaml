@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             x:Class="Smartmoveapp.Views.RenameFolder">
+    <toolkit:Popup.Content>
+        <StackLayout BackgroundColor="{StaticResource themecolora}">
+            <Image>
+                
+            </Image>
+            <Entry Text=""></Entry>
+   <Grid  Grid.ColumnSpan="2">
+    <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Text="Ok"
+                        FontAttributes="None"
+                        
+                        FontSize="20" FontFamily="Poppins" 
+                        TextTransform="None" ></Button>
+                <Button  FontSize="20" FontFamily="Poppins" 
+                         Text="Cancel" TextTransform="None" 
+                         FontAttributes="None"
+                        TextColor="{StaticResource themecolorf}" 
+                        BackgroundColor="{StaticResource themecolora}"></Button>
+            </Grid>
+            
+        </StackLayout>
+        
+        
+    </toolkit:Popup.Content>
+
+</toolkit:Popup>

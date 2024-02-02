@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:Smartmoveapp"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	   xmlns:chips="clr-namespace:Xamarin.Forms.Chips;assembly=Xamarin.Forms.Chips"
+                xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+	   xmlns:controls="clr-namespace:Smartmoveapp.Controls"
+	   BackgroundColor="{StaticResource themecolorb}"
+             x:Class="Smartmoveapp.Views.InfoDetailPage">
+ <ContentPage.Resources>
+  <Style TargetType="controls:IconButton" x:Key="IconButtonStyle">
+   <Setter Property="Margin" Value="10"></Setter>
+   <Setter Property="IconFontSize" Value="20"></Setter>
+   <Setter Property="TextFontSize" Value="11"></Setter>
+   <Setter Property="ControlTemplate" Value="{StaticResource IconButtonControlTemplate}"></Setter>
+  </Style>
+  <Style TargetType="ImageButton" x:Key="ChipImageButton">
+   <Setter Property="WidthRequest" Value="30"></Setter>
+   <Setter Property="HeightRequest" Value="30"></Setter>
+   <Setter Property="Margin" Value="0"> </Setter>
+   <Setter Property="Padding" Value="0,0,0,5"></Setter>
+   <Setter Property="VerticalOptions" Value="Center"></Setter>
+   <Setter Property="VerticalOptions" Value="Center"></Setter>
+  </Style>
+  <Style TargetType="Label" x:Key="ChipLabel" >
+   <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+   
+  </Style>
+ </ContentPage.Resources>
+ <NavigationPage.TitleView>
+  <Label HorizontalOptions="Center" Padding="15,0,0,0"  HorizontalTextAlignment="Center" TextDecorations="Underline" BackgroundColor="Transparent"  TextColor="{StaticResource themecolorf}" FontFamily="PoppinsBlack"  FontSize="20" Text="{Binding Name}">
+  </Label>
+ </NavigationPage.TitleView>
+ <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+    <StackLayout  BackgroundColor="{StaticResource themecolorb}">
+     <FlexLayout Direction="Column" BackgroundColor="{StaticResource themecolord}" >
+      <ContentView xct:CornerRadiusEffect.CornerRadius="30">
+       <ImageButton Margin="10" xct:CornerRadiusEffect.CornerRadius="15"
+                                   Aspect="AspectFit" 
+                                         BackgroundColor="#0000"
+                                         Clicked="OpenDoc"
+                                   xct:ShadowEffect.Color="Black"
+                                   xct:ShadowEffect.Opacity="0"
+                                   xct:ShadowEffect.OffsetX="5" 
+                                   xct:ShadowEffect.OffsetY="5" 
+                                   Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.DocImage.jpg}"
+                                   ></ImageButton>
+      </ContentView>
+
+     </FlexLayout>
+                    <StackLayout BackgroundColor="{StaticResource themecolorb}">
+      <Label Padding="15,10,0,0" FontSize="20" TextDecorations="Underline"  HorizontalTextAlignment="Center" FontFamily="PoppinsBlack" FontAttributes="Bold" TextColor="{StaticResource themecolorc}">
+       Information
+      </Label>
+      <StackLayout BackgroundColor="{StaticResource themecolora}" Margin="20,0,20,0" xct:CornerRadiusEffect.CornerRadius="20">
+                            <StackLayout  HorizontalOptions="Center">
+                                <Grid Grid.ColumnSpan="2" >
+                                    <Label 
+                           VerticalOptions="Center"
+                        
+                           HorizontalOptions="Center"
+                          HorizontalTextAlignment="End"
+                           VerticalTextAlignment="Center"
+                           Grid.Column="0" FontSize="15" FontFamily="PoppinsBlack" TextTransform="None" 
+                                        
+                                        TextColor="{StaticResource themecolorc}" Text="Subject"></Label>
+                                    <Button   Grid.Column="1"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                             HeightRequest="40"
+                                              BackgroundColor="{StaticResource themecolora}"
+                                            
+                           FontSize="15" FontFamily="Poppins" TextTransform="None"
+                                             TextColor="{StaticResource themecolorc}" 
+                             Text="{Binding Name}"></Button>
+                                </Grid>
+                                <StackLayout>
+                                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                                </StackLayout>
+                            </StackLayout>
+                             <StackLayout  HorizontalOptions="Center">
+                              <Grid Grid.ColumnSpan="2" >
+                               <Label 
+                       VerticalOptions="Center"
+                        
+                       HorizontalOptions="Center"
+                      HorizontalTextAlignment="End"
+                       VerticalTextAlignment="Center"
+                       Grid.Column="0" FontSize="15" FontFamily="PoppinsBlack" TextTransform="None" 
+              
+                                    TextColor="{StaticResource themecolorc}" Text="Date of Upload"></Label>
+                               <Label   Grid.Column="1"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                         HeightRequest="40"
+                                          BackgroundColor="{StaticResource themecolora}"
+                                       HorizontalTextAlignment="Center"
+                                         VerticalTextAlignment="Center"
+                       FontSize="15" FontFamily="Poppins" TextTransform="None"
+                                         TextColor="{StaticResource themecolorc}" 
+                         Text="{Binding  ContractDetail.InfoSubject}"></Label>
+                              </Grid>
+                              <StackLayout>
+                               <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                              </StackLayout>
+                             </StackLayout>
+                               <StackLayout  HorizontalOptions="Center">
+                                <Grid Grid.ColumnSpan="2" >
+                                    <Label 
+                           VerticalOptions="Center"
+                        
+                           HorizontalOptions="Center"
+                          HorizontalTextAlignment="End"
+                           VerticalTextAlignment="Center"
+                           Grid.Column="0" FontSize="15" FontFamily="PoppinsBlack" TextTransform="None" 
+                                        
+                                        TextColor="{StaticResource themecolorc}" Text="Company"></Label>
+                                    <Label   Grid.Column="1"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                             HeightRequest="40"
+                                              BackgroundColor="{StaticResource themecolora}"
+                                           HorizontalTextAlignment="Center"
+                                             VerticalTextAlignment="Center"
+                           FontSize="15" FontFamily="Poppins" TextTransform="None"
+                                             TextColor="{StaticResource themecolorc}" 
+                             Text="{Binding  ContractDetail.InfoSubject}"></Label>
+                                </Grid>
+                                <StackLayout>
+                                    <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+      <Label Padding="15,10,0,0" FontSize="20" TextDecorations="Underline"  HorizontalTextAlignment="Center" FontFamily="PoppinsBlack" FontAttributes="Bold" TextColor="{StaticResource themecolorc}">
+       Notes
+      </Label>
+      <Entry FontFamily="PoppinsBlack" FontSize="15" HorizontalTextAlignment="Start" BackgroundColor="{StaticResource themecolora}" HeightRequest="50" Margin="20" xct:CornerRadiusEffect.CornerRadius="20"></Entry>
+      <Label Padding="15,10,0,0" FontSize="20" TextDecorations="Underline"  HorizontalTextAlignment="Center" FontFamily="PoppinsBlack" FontAttributes="Bold" TextColor="{StaticResource themecolorc}">
+       Tags
+      </Label>
+
+      <CollectionView BackgroundColor="Transparent" Margin="10" HeightRequest="100" ItemsSource="{Binding Tags}">
+       <CollectionView.ItemsLayout>
+        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"></LinearItemsLayout>
+       </CollectionView.ItemsLayout>
+       <CollectionView.ItemTemplate>
+        <DataTemplate>
+         <StackLayout>
+	<StackLayout.Resources>
+
+	</StackLayout.Resources>
+	<chips:Chip  Text="{Binding .,StringFormat='#{0}'}" ForceWidthToAtLeastHeight="False"  HeightRequest="20"  BackgroundColor="{StaticResource themecolora}" TextColor="{StaticResource themecolorf}" CloseButtonImageStyle="{DynamicResource ChipImageButton  }"   CloseButtonImage="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.cancel.png}"   BorderColor="{StaticResource themecolora}"></chips:Chip>
+         </StackLayout>
+        </DataTemplate>
+       </CollectionView.ItemTemplate>
+
+      </CollectionView>
+      <Button Text="+Add Tags" Clicked="AddTag" BackgroundColor="Transparent" TextColor="Black" HorizontalOptions="Center" FontFamily="PoppinsBlack"  ></Button>
+
+     </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

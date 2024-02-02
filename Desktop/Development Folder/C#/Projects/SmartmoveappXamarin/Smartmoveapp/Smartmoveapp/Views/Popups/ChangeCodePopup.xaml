@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+	 xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	 Size="400,500"
+	 IsLightDismissEnabled="False"
+	 xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Smartmoveapp.Views.Popups.ChangeCodePopup">
+
+  <StackLayout Spacing="10">
+
+   <!--Old Code -->
+  <StackLayout Spacing="20">
+   <Label HorizontalOptions="Start"  VerticalOptions="Center" Text="Enter Old Pass Word" FontFamily="PoppinsBlack" FontSize="20" TextColor="{StaticResource themecolorf}">
+    
+   </Label>
+   <Frame BorderColor="{StaticResource themecolorf}">
+    <Entry Text="{Binding OldCode}" PlaceholderColor="{StaticResource themecolore}"   FontSize="15" FontFamily="PoppingBlack" TextColor="{StaticResource themecolorf}" >
+
+    </Entry>
+   </Frame>
+  
+   
+  </StackLayout>
+   <!--New Code-->
+  <StackLayout>
+   <Label  HorizontalOptions="Start"  VerticalOptions="Center" Text="Enter Old Pass Word" FontFamily="PoppinsBlack" FontSize="20" TextColor="{StaticResource themecolorf}">
+
+   </Label>
+
+   <Entry Text="{Binding NewCode}" PlaceholderColor="{StaticResource themecolore}" FontSize="15" FontFamily="PoppinsBlack" TextColor="{StaticResource themecolorf}">
+    
+   </Entry>
+   
+  </StackLayout>
+  <!---Action Buttons-->
+  <StackLayout Orientation="Horizontal" Spacing="20" Padding="5">
+   <Button Text="Ok" FontFamily="PoppinsBlack" FontSize="20" Clicked="ChangeFolderCode" TextColor="{StaticResource themecolorf}" BorderColor="{StaticResource themecolorf}" BorderWidth="3" BackgroundColor="{StaticResource themecolora}"  WidthRequest="120" HeightRequest="35"></Button>
+   <Button Text="Ok" FontFamily="PoppinsBlack" FontSize="20" Clicked="Close" TextColor="{StaticResource themecolora}" BorderColor="{StaticResource themecolora}"  BackgroundColor="{StaticResource themecolorf}"  WidthRequest="120" HeightRequest="35"></Button>
+  </StackLayout>
+
+ </StackLayout>
+
+
+</xct:Popup>

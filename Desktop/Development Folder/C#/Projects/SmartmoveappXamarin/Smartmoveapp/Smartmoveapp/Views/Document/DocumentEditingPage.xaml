@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	   BackgroundColor="{StaticResource themecolora}"
+	   xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Smartmoveapp.Views.Document.DocumentEditingPage">
+ <NavigationPage.TitleView>
+  <StackLayout>
+   <Label TextColor="{StaticResource themecolorf} " Text="Edit Document" TextDecorations="Underline" FontFamily="PoppinsBlack" FontSize="20"></Label>
+  </StackLayout>
+ </NavigationPage.TitleView>
+
+ <ScrollView>
+
+  <StackLayout>
+   <StackLayout Orientation="Horizontal" >
+    <Button BorderColor="{StaticResource themecolorf}" Clicked="CropAction" BorderWidth="3" toolkit:ShadowEffect.Color="Black" toolkit:ShadowEffect.OffsetX="5" toolkit:ShadowEffect.OffsetY="5" toolkit:ShadowEffect.Opacity=".5" BackgroundColor="{StaticResource themecolora}" Text="crop" FontFamily="materialicon" FontSize="30" TextColor="{StaticResource themecolorf}" Margin="20" HorizontalOptions="Center"></Button>
+    <Label Text=""></Label>
+   </StackLayout>
+
+   <StackLayout BackgroundColor="{StaticResource themecolora}" IsVisible="{Binding IsSinglePhoto}">
+
+  <Image WidthRequest="360" HeightRequest="480" MinimumWidthRequest="360" MinimumHeightRequest="480" Aspect="AspectFill" Margin="10" BackgroundColor="Transparent" toolkit:CornerRadiusEffect.CornerRadius="10" toolkit:ShadowEffect.Color="Black" toolkit:ShadowEffect.OffsetX="5" toolkit:ShadowEffect.OffsetY="5" toolkit:ShadowEffect.Opacity=".5" Source="{Binding CurrentImage.ImageData,Converter={toolkit:ByteArrayToImageSourceConverter}}">
+   
+  </Image>
+
+ </StackLayout>
+
+  <StackLayout IsVisible="{Binding IsSinglePhoto,Converter={toolkit:InvertedBoolConverter}}">
+
+    <CollectionView HeightRequest="180"  Margin="0" ItemsSource="{Binding Images}" SelectionMode="Single"  SelectionChanged="CurrentImageSelected">
+      <CollectionView.ItemsLayout>
+       <LinearItemsLayout Orientation="Horizontal" ItemSpacing="20">
+       </LinearItemsLayout>
+      </CollectionView.ItemsLayout>
+     
+      <CollectionView.ItemTemplate>
+       <DataTemplate>
+        <Frame  >
+         <VisualStateManager.VisualStateGroups>
+	<VisualStateGroup x:Name="CommonStates">
+	 <VisualState x:Name="Selected" >
+	 <VisualState.Setters>
+	  <Setter Property="BorderColor" Value="{StaticResource themecolorf}"></Setter>
+	  <Setter Property="WidthRequest" Value="95"></Setter>
+	   <Setter Property="HeightRequest" Value="125"></Setter>
+	  
+	  <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+	  </VisualState.Setters>
+	  
+	 </VisualState>
+	 <VisualState x:Name="Normal" >
+	  <VisualState.Setters>
+	   <Setter Property="WidthRequest" Value="90"></Setter>
+	  <Setter Property="HeightRequest" Value="120"></Setter>
+
+	  <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+	 </VisualState.Setters>
+
+	 </VisualState>
+	</VisualStateGroup>
+         </VisualStateManager.VisualStateGroups>
+
+         <Image WidthRequest="90" HeightRequest="120" Aspect="AspectFill"   Margin="10" BackgroundColor="Transparent"    Source="{Binding ImageData,Converter={toolkit:ByteArrayToImageSourceConverter}}">
+         </Image>
+        </Frame>
+       </DataTemplate>
+      </CollectionView.ItemTemplate>
+
+     </CollectionView>
+    <Image    WidthRequest="360" HeightRequest="480" Aspect="AspectFill" Margin="10" BackgroundColor="Transparent" toolkit:CornerRadiusEffect.CornerRadius="10" toolkit:ShadowEffect.Color="Black" toolkit:ShadowEffect.OffsetX="5" toolkit:ShadowEffect.OffsetY="5" toolkit:ShadowEffect.Opacity=".5" Source="{Binding CurrentImage.ImageData,Converter={toolkit:ByteArrayToImageSourceConverter}}">
+
+    </Image>
+
+   </StackLayout>
+   <Button Clicked="ScanDocument" FontFamily="PoppinsBlack" HorizontalOptions="Center" Text="Scan" BorderColor="{StaticResource themecolora}" BackgroundColor="{StaticResource themecolora}" FontSize="20" BorderWidth="5" TextColor="{StaticResource themecolorf}" CornerRadius="0" toolkit:ShadowEffect.Color="Black" toolkit:ShadowEffect.OffsetX="5" toolkit:ShadowEffect.OffsetY="5" toolkit:ShadowEffect.Opacity=".5" WidthRequest="200" HeightRequest="50" ></Button>
+  </StackLayout>
+ </ScrollView>
+</ContentPage>

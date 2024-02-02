@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	     xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+	 Size="350,250"
+	     xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             x:Class="Smartmoveapp.Views.Popups.FolderCodePrompt">
+
+ <StackLayout HorizontalOptions="Center" Spacing="30" Margin="0,20,0,0">
+  
+  <Label  HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,20,0,0" Text="Enter folder passcode" TextColor="{StaticResource themecolorf}" FontFamily="Poppins"></Label>
+  <Entry IsPassword="True" PlaceholderColor="{StaticResource themecolorf}" FontSize="20" Margin="20" WidthRequest="200"  Text="{Binding KeyCode}" TextColor="{StaticResource themecolorf}" FontFamily="Poppins" HorizontalOptions="Center" HorizontalTextAlignment="Center"></Entry>
+  <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+   <Button HorizontalOptions="Start" Text="Confirm" Clicked="ConfirmCode"  TextColor="{StaticResource themecolorf}" BorderColor="{StaticResource themecolorf}" FontFamily="PoppinsBlack" BackgroundColor="{StaticResource themecolora}"></Button>
+   <Button HorizontalOptions="End" Text="Cancel"  Clicked="Cancel" TextColor="{StaticResource themecolora}"  BorderColor="Transparent" FontFamily="PoppinsBlack" BackgroundColor="{StaticResource themecolorf}"></Button>
+  </StackLayout>
+  
+ </StackLayout>
+ 
+</xct:Popup>

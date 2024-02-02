@@ -1,0 +1,120 @@
+﻿
+<toolkit:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+        xmlns:toolkit="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Smartmoveapp.Views.MapItemPopUp"
+                 BackgroundColor="#0000"
+                >
+    <toolkit:Popup.Resources>
+        <Style x:Key="spanlabel" TargetType="Label">
+            <Setter Property="Text" Value="star"></Setter>
+            <Setter Property="TextTransform" Value="None"></Setter>
+            <Setter Property="TextColor" Value="{StaticResource themecolorf}"></Setter>
+            <Setter Property="FontFamily" Value="materialicon"></Setter>
+        </Style>
+    </toolkit:Popup.Resources>
+    <StackLayout Margin="50,250,50,250" xct:CornerRadiusEffect.CornerRadius="20" WidthRequest="100" HeightRequest="100" BackgroundColor="{StaticResource themecolora}" >
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto">
+                    
+                    </ColumnDefinition>
+                    <ColumnDefinition Width="Auto">
+                    
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <FlexLayout Direction="Row" Grid.Column="0">
+                
+                    <Label  FontAttributes="Bold"
+                       x:Name="LocTitle"
+                           FontSize="22"
+                           Text="Shell"
+                           Padding="10,0,0,0"
+                       FontFamily="Poppins" 
+                           HorizontalTextAlignment="Center"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="{StaticResource themecolorc}">
+
+
+                    </Label>
+                    <FlexLayout Direction="Column">
+                        <FlexLayout.Resources>
+                            <Style x:Key="spanlabel" TargetType="Label">
+                                <Setter Property="Text" Value="star"></Setter>
+                                <Setter Property="TextTransform" Value="None"></Setter>
+                                <Setter Property="TextColor" Value="{StaticResource themecolorf}"></Setter>
+                                <Setter Property="FontFamily" Value="materialicon"></Setter>
+                            </Style>
+                        </FlexLayout.Resources>
+                        <Label FontFamily="Poppins"
+                        Text="42"
+                       BackgroundColor="{StaticResource themecolora}"
+                       TextColor="{StaticResource themecolore}"
+                       x:Name="LocRating"
+                       FontSize="20">
+
+                        </Label>
+                        <!--<Label x:Name="RatingWidget">
+                        
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Style="{StaticResource spanlabel}">
+                                    
+                                    </Span>
+                                    <Span Style="{StaticResource spanlabel}" >
+                                    
+                                    </Span>
+                                    <Span Style="{StaticResource spanlabel}">
+                                    
+                                    </Span>
+                                    <Span Style="{StaticResource spanlabel}">
+                                    
+                                    </Span>
+                                    <Span Style="{StaticResource spanlabel}">
+                                    
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>-->
+                        <Label FontSize="20" 
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource themecolore}"
+                               x:Name="LocRateCount" Text="(82)"></Label>
+                    </FlexLayout>
+                </FlexLayout>
+                <FlexLayout Direction="Column" AlignContent="Center" AlignItems="Center" Grid.Column="1">
+                    <Button   
+                    xct:CornerRadiusEffect.CornerRadius="20"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    BorderColor="{StaticResource themecolorf}"
+                    TextColor="{StaticResource themecolorf}"
+                    BackgroundColor="{StaticResource themecolora}"
+                    FontFamily="materialicon"
+                    FontSize="20"
+                    TextTransform="None"
+                    Text="directions">
+                    
+                                </Button>
+                
+                    <Button 
+                        xct:CornerRadiusEffect.CornerRadius="20"
+                            WidthRequest="40"
+                            HeightRequest="40"
+                            BorderColor="{StaticResource themecolorf}"
+                            TextColor="{StaticResource themecolorf}"
+                            BackgroundColor="{StaticResource themecolora}"
+                            FontFamily="materialicon"
+                            FontSize="20"
+                            TextTransform="None"
+                            Text="bookmark">
+                    
+                    </Button>
+                </FlexLayout>
+            </Grid>
+        
+        </StackLayout>
+
+</toolkit:Popup>

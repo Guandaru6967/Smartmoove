@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	 Size="350,300"
+	   xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             x:Class="Smartmoveapp.Views.Popups.LockFolder">
+ <StackLayout Spacing="30" >
+  <Label  FontFamily="Poppins" FontSize="20" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="10"  TextColor="{StaticResource themecolorf}"  Text="{Binding Folder.FolderName,StringFormat='Enter new password for  {0}'}"></Label>
+  <StackLayout Orientation="Horizontal"  Spacing="20">
+   
+   <Entry Keyboard="Chat" FontFamily="Poppins" WidthRequest="300" FontSize="15" TextColor="{StaticResource themecolorf}" HorizontalOptions="Center" IsPassword="{Binding CodeVisibility}" Text="{Binding  Path=Folder.LockCode}">
+
+   </Entry>
+   <Button WidthRequest="30" TextColor="{StaticResource themecolorf}" HeightRequest="30" FontSize="30" FontFamily="materialicon" Text="visibility"  Clicked="ToggleCodeVisibility" BackgroundColor="Transparent"></Button>
+  </StackLayout>
+  
+  <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+
+   <Button Text="lock"  Clicked="LockWithCode" HorizontalOptions="Start" FontSize="20" FontFamily="Poppins" BackgroundColor="Transparent" TextColor="{StaticResource themecolorf}"></Button>
+   <Button Text="cancel" Clicked="Cancel" HorizontalOptions="End" FontSize="20" FontFamily="Poppins" BackgroundColor="{StaticResource themecolorf}" TextColor="{StaticResource themecolora}"> </Button>
+  </StackLayout>
+ </StackLayout>
+</xct:Popup>

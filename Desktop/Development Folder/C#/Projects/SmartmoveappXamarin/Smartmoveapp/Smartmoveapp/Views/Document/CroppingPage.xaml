@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	   xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+	   xmlns:controls="clr-namespace:Smartmoveapp.Controls"
+              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             x:Class="Smartmoveapp.Views.Document.CroppingPage">
+
+ <Grid WidthRequest="480" HeightRequest="640">
+  <Image x:Name="CroppedImageView" BackgroundColor="{StaticResource themecolorf}" Aspect="AspectFit" IsVisible="False"/>
+  <skia:SKCanvasView WidthRequest="480" HeightRequest="640" x:Name="CropImageCanvas" BackgroundColor="White"  PaintSurface="OnCanvasViewPaintSurface"/>
+  <controls:ManualCropView x:Name="ManualCropView" />
+  <Button x:Name="CropButton" VerticalOptions="End" 
+                Text="Crop!" 
+                FontSize="Medium"
+		BackgroundColor="{StaticResource themecolora}"
+	toolkit:ShadowEffect.Color="Black"
+	TextColor="{StaticResource themecolorf}"
+                Clicked="CropButton_OnClicked"/>
+  <Button x:Name="DisplayCroppedButton" IsVisible="False" VerticalOptions="End" 
+                Text="View Cropped Image"
+	BackgroundColor="{StaticResource themecolora}"
+	toolkit:ShadowEffect.Color="Black"
+	TextColor="{StaticResource themecolorf}"
+	FontFamily="PoppinsBlack"
+	
+                FontSize="Medium"
+                Clicked="DisplayCroppedButton_OnClicked"/>
+ </Grid>
+</ContentPage>

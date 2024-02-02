@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <GridLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:columnCount="2"
+    android:rowCount="1"
+    android:columnOrderPreserved="true"
+    
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content">
+    
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+                android:layout_margin="10dp">
+            <TextView
+                    android:id="@+id/InfoWindowTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@InfoWindowTitle"
+                    android:fontFamily="@font/"
+                    android:textSize="50px"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+            <LinearLayout
+            android:orientation="horizontal"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content">
+                <TextView
+                        android:id="@+id/RatingCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@InfoWindowSubtitle"
+                        android:textSize="40px"
+                        android:textColor="@android:color/black" />
+                <LinearLayout
+                android:orientation="vertical"
+                    android:layout_width="400px"
+                    android:layout_height="wrap_content">
+                    <RatingBar
+                    
+                        android:numStars="5"
+                        android:id="@+id/ratingBar"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:isIndicator="true"
+                    android:progressTint="#999900"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+                <TextView
+                        android:id="@+id/Ratings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@InfoWindowSubtitle"
+                        android:textSize="40px"
+                        android:textColor="@android:color/black" />
+        </LinearLayout>
+            <TextView
+                          android:id="@+id/InfoWindowSubtitle"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="@InfoWindowSubtitle"
+                          android:textSize="20px"
+                          android:textColor="@android:color/black" />
+   </LinearLayout>
+     <LinearLayout
+        android:orientation="horizontal"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content">
+    <Button
+        android:layout_width="wrap_content"
+    android:id="@+id/directions"
+            android:textAllCaps="false"
+           android:elevation="10dp"
+            android:textSize="60px"
+             android:textColor="#1874C9"
+            android:backgroundTint="#0000"
+        android:layout_height="wrap_content"/>
+         <Button
+           android:id="@+id/bookmark"
+                  android:textAllCaps="false"
+            android:backgroundTint="#0000"
+            android:textSize="60px"
+            android:textColor="#1874C9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</GridLayout>
+    

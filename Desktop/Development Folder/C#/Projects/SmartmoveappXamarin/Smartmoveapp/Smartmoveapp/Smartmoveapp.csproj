@@ -1,0 +1,283 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <EnableNETAnalyzers>True</EnableNETAnalyzers>
+    <LangVersion>default</LangVersion>
+    <UserSecretsId>c8a79ff2-e92e-4e61-8dc6-8f8787dc7a5c</UserSecretsId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\Page1.xaml.cs" />
+    <Compile Remove="Views\PassCodePage.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\animations\document_scanning.json" />
+    <None Remove="Assets\DocImage.jpg" />
+    <None Remove="Assets\labelled\addfolder.png" />
+    <None Remove="Assets\labelled\addicon.png" />
+    <None Remove="Assets\labelled\add_document.png" />
+    <None Remove="Assets\labelled\add_folder.png" />
+    <None Remove="Assets\labelled\add_folder2.png" />
+    <None Remove="Assets\labelled\cancel.png" />
+    <None Remove="Assets\labelled\code_change.png" />
+    <None Remove="Assets\labelled\deletefolder.png" />
+    <None Remove="Assets\labelled\docicon.png" />
+    <None Remove="Assets\labelled\DocImage.pdf" />
+    <None Remove="Assets\labelled\favourite_folder.png" />
+    <None Remove="Assets\labelled\filter_icon.png" />
+    <None Remove="Assets\labelled\foldericon.png" />
+    <None Remove="Assets\labelled\gridview.png" />
+    <None Remove="Assets\labelled\homeicon.png" />
+    <None Remove="Assets\labelled\key_lock.png" />
+    <None Remove="Assets\labelled\listview.png" />
+    <None Remove="Assets\labelled\lock_favouriteicon.png" />
+    <None Remove="Assets\labelled\lock_folder.png" />
+    <None Remove="Assets\labelled\lock_foldericon.png" />
+    <None Remove="Assets\labelled\mehricon.png" />
+    <None Remove="Assets\labelled\rename.png" />
+    <None Remove="Assets\labelled\renamefolder.png" />
+    <None Remove="Assets\labelled\search.png" />
+    <None Remove="Assets\labelled\search2.png" />
+    <None Remove="Assets\labelled\service1.jpg" />
+    <None Remove="Assets\labelled\service2.jpg" />
+    <None Remove="Assets\labelled\service3.jpg" />
+    <None Remove="Assets\labelled\service4.jpg" />
+    <None Remove="Assets\labelled\solid_dotted_menu.png" />
+    <None Remove="Assets\labelled\solid_file.png" />
+    <None Remove="Assets\labelled\solid_file_contract.png" />
+    <None Remove="Assets\labelled\solid_file_invoice.png" />
+    <None Remove="Assets\labelled\solid_lock.png" />
+    <None Remove="Assets\labelled\solid_receipt.png" />
+    <None Remove="Assets\labelled\solid_renameicon.png" />
+    <None Remove="Assets\labelled\solid_staricon.png" />
+    <None Remove="Assets\labelled\solid_trash.png" />
+    <None Remove="Assets\labelled\solid_unlock.png" />
+    <None Remove="Assets\labelled\sorting.png" />
+    <None Remove="Assets\labelled\starred.png" />
+    <None Remove="Assets\labelled\takephotoicon.png" />
+    <None Remove="Assets\labelled\verlauficon.png" />
+    <None Remove="Assets\labelled\vertragspartnericon.png" />
+    <None Remove="Fonts\maeterialdesignfont.ttf" />
+    <None Remove="MaterialIcons - Regular.ttf" />
+    <None Remove="Poppins-Black.ttf" />
+    <None Remove="Poppins-Bold.ttf" />
+    <None Remove="Poppins-Light.ttf" />
+    <None Remove="Poppins-Medium.ttf" />
+    <None Remove="Poppins-Thin.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\animations\document_scanning.json" />
+    <EmbeddedResource Include="Assets\labelled\addfolder.png" />
+    <EmbeddedResource Include="Assets\labelled\add_document.png" />
+    <EmbeddedResource Include="Assets\labelled\add_folder.png" />
+    <EmbeddedResource Include="Assets\labelled\add_folder2.png" />
+    <EmbeddedResource Include="Assets\labelled\cancel.png" />
+    <EmbeddedResource Include="Assets\labelled\code_change.png" />
+    <EmbeddedResource Include="Assets\labelled\deletefolder.png" />
+    <EmbeddedResource Include="Assets\labelled\DocImage.jpg" />
+    <EmbeddedResource Include="Assets\labelled\addicon.png" />
+    <EmbeddedResource Include="Assets\labelled\docicon.png" />
+    <EmbeddedResource Include="Assets\labelled\DocImage.pdf" />
+    <EmbeddedResource Include="Assets\labelled\favourite_folder.png" />
+    <EmbeddedResource Include="Assets\labelled\filter_icon.png" />
+    <EmbeddedResource Include="Assets\labelled\foldericon.png" />
+    <EmbeddedResource Include="Assets\labelled\gridview.png" />
+    <EmbeddedResource Include="Assets\labelled\homeicon.png" />
+    <EmbeddedResource Include="Assets\labelled\key_lock.png" />
+    <EmbeddedResource Include="Assets\labelled\listview.png" />
+    <EmbeddedResource Include="Assets\labelled\lock_favouriteicon.png" />
+    <EmbeddedResource Include="Assets\labelled\lock_folder.png" />
+    <EmbeddedResource Include="Assets\labelled\lock_foldericon.png" />
+    <EmbeddedResource Include="Assets\labelled\mehricon.png" />
+    <EmbeddedResource Include="Assets\labelled\rename.png" />
+    <EmbeddedResource Include="Assets\labelled\renamefolder.png" />
+    <EmbeddedResource Include="Assets\labelled\search.png" />
+    <EmbeddedResource Include="Assets\labelled\search2.png" />
+    <EmbeddedResource Include="Assets\labelled\service1.jpg" />
+    <EmbeddedResource Include="Assets\labelled\service2.jpg" />
+    <EmbeddedResource Include="Assets\labelled\service3.jpg" />
+    <EmbeddedResource Include="Assets\labelled\service4.jpg" />
+    <EmbeddedResource Include="Assets\labelled\solid_dotted_menu.png" />
+    <EmbeddedResource Include="Assets\labelled\solid_file.png" />
+    <EmbeddedResource Include="Assets\labelled\solid_file_contract.png" />
+    <EmbeddedResource Include="Assets\labelled\solid_file_invoice.png" />
+    <EmbeddedResource Include="Assets\labelled\solid_lock.png" />
+    <EmbeddedResource Include="Assets\labelled\solid_receipt.png" />
+    <EmbeddedResource Include="Assets\labelled\solid_renameicon.png" />
+    <EmbeddedResource Include="Assets\labelled\solid_staricon.png" />
+    <EmbeddedResource Include="Assets\labelled\solid_trash.png" />
+    <EmbeddedResource Include="Assets\labelled\solid_unlock.png" />
+    <EmbeddedResource Include="Assets\labelled\sorting.png" />
+    <EmbeddedResource Include="Assets\labelled\starred.png" />
+    <EmbeddedResource Include="Assets\labelled\takephotoicon.png" />
+    <EmbeddedResource Include="Assets\labelled\verlauficon.png" />
+    <EmbeddedResource Include="Assets\labelled\vertragspartnericon.png" />
+    <EmbeddedResource Include="Fonts\maeterialdesignfont.ttf" />
+    <EmbeddedResource Include="MaterialIcons - Regular.ttf" />
+    <EmbeddedResource Include="Poppins-Black.ttf" />
+    <EmbeddedResource Include="Poppins-Bold.ttf" />
+    <EmbeddedResource Include="Poppins-Light.ttf" />
+    <EmbeddedResource Include="Poppins-Medium.ttf" />
+    <EmbeddedResource Include="Poppins-Thin.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CardsView" Version="2.8.1" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.1.0" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
+    <PackageReference Include="Plugin.XCalendar" Version="2.1.0" />
+    <PackageReference Include="SkiaSharp.Extended" Version="2.0.0-preview.86" />
+    <PackageReference Include="SkiaSharp.Extended.UI.Forms" Version="2.0.0-preview.86" />
+    <PackageReference Include="SkiaSharp.Skottie" Version="2.88.7" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.88.7" />
+    <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.6" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms.Chips" Version="1.0.13" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2478" />
+    <PackageReference Include="Xamarin.Forms.Skeleton" Version="2.0.0" />
+    <PackageReference Include="XCalendar.Core" Version="4.1.0" />
+    <PackageReference Include="XCalendar.Forms" Version="4.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Document\ContractDetailPage.xaml.cs">
+      <DependentUpon>ContractDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Folders\FolderPage.xaml.cs">
+      <DependentUpon>FolderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Page.xaml.cs">
+      <DependentUpon>PassWordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Popups\DocumentAddPopup.xaml.cs">
+      <DependentUpon>DocumentAddPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Popups\RenameFolder.xaml.cs">
+      <DependentUpon>RenameFolder.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\Agent\AddAgentPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Agent\AgentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DatePicker.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Document\ContractDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Document\CroppingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Document\DocumentEditingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Document\DocumentUploadPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Document\DocView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Document\InfoDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Document\InvoiceDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Document\ScanningPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Document\TagView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Folders\FilterFolderPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Folders\SortFolderPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Map\MapItemPopUp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Map\MapPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Folders\FolderPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PassWordPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Folders\PasswordPrompt.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PopUpPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Folders\RenameFolder.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Popups\ChangeCodePopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Popups\ChangeFolderCode.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Popups\CreateFolder.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Popups\DocumentScanFeedbackPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Popups\DocumentAddPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Popups\FolderAddPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Popups\FolderCodePrompt.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Popups\FolderConfirmDelete.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Popups\FolderOptions.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Popups\ImageViewPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Popups\LockFolder.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Popups\RenameFolder.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Popups\SortDocumentPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Popups\SortFoldersPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Popups\TagAddPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

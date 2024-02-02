@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	     Size="350,500"
+	   xmlns:toolkit="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+	   xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Smartmoveapp.Views.Popups.ChangeFolderCode">
+
+ <StackLayout Spacing="20">
+<!--Old Password-->
+  <StackLayout Orientation="Vertical" Spacing="5">
+   <Label Text="Enter Old Password" FontFamily="PoppinsBlack" FontSize="20" TextColor="{StaticResource themecolorf}" HorizontalOptions="Start"></Label>
+   <Entry Text="{Binding OldCode} " FontFamily="Poppins" FontSize="15" TextColor="{StaticResource themecolore}"  HorizontalOptions="Center" HorizontalTextAlignment="Center"></Entry>
+  </StackLayout>
+  <!--New Password-->
+  <StackLayout Orientation="Vertical" Spacing="5">
+   <Label Text="Enter Old Password" FontFamily="PoppinsBlack" FontSize="20" TextColor="{StaticResource themecolorf}" HorizontalOptions="Start"></Label>
+   <Entry Text="{Binding NewCode} " FontFamily="Poppins" FontSize="15" TextColor="{StaticResource themecolore}"  HorizontalOptions="Center" HorizontalTextAlignment="Center"></Entry>
+  </StackLayout>
+  <!--Confirm-->
+  <Button Text="Confirm" Clicked="ChangePassCode" FontFamily="Poppins" FontSize="15"></Button>
+ </StackLayout>
+</toolkit:Popup>

@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+	   xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+	  VerticalOptions="End"
+	   Size="400,400"
+	 IsLightDismissEnabled="False"
+	   xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Smartmoveapp.Views.Folders.FilterFolderPopup">
+<StackLayout Spacing="6">
+
+  <StackLayout.Resources>
+
+   <Style x:Key="doctypelabel" TargetType="Label">
+    
+    <Setter Property="FontSize" Value="15"></Setter>
+    <Setter Property="FontFamily" Value="Poppins"></Setter>
+    <Setter Property="TextColor" Value="{StaticResource themecolorf}"></Setter>
+    <Setter Property="HorizontalOptions" Value="Center"></Setter>
+    <Setter Property="VerticalOptions" Value="Center"></Setter>
+    
+   </Style>
+   
+  </StackLayout.Resources>
+
+  <BoxView
+           Margin="20,16,20,5"
+           BackgroundColor="{StaticResource themecolorf}"
+           CornerRadius="2"
+           HeightRequest="5"
+           HorizontalOptions="Center"
+           WidthRequest="80" />
+
+  <Label
+           Padding="20,0,20,0"
+           FontAttributes="Bold"
+           FontSize="18"
+	   HorizontalOptions="Center"
+	   HorizontalTextAlignment="Center"
+	   FontFamily="PoppinsBlack"
+VerticalOptions="Center"
+TextDecorations="Underline"
+	   TextColor="{StaticResource themecolorf}"
+           Text="Filter Folders" />
+
+  <ScrollView Orientation="Vertical" HorizontalOptions="Center">
+   <StackLayout Spacing="0">
+    <Label
+                   Padding="20"
+                   FontSize="Subtitle"
+                   HorizontalOptions="Start"
+  FontFamily="PoppinsBlack"
+  VerticalTextAlignment="Center"
+  VerticalOptions="Center"
+  TextTransform="Default"
+     TextColor="{StaticResource themecolore}"
+  TextDecorations="Underline"
+                   Text="DOC TYPES " />
+    <StackLayout Spacing="10">
+
+     <!-- Contract Filter-->
+     <Grid ColumnDefinitions=".5*,.5*"  HorizontalOptions="Center">
+      <Label Grid.Column="0"  Text="Contracts" Style="{DynamicResource doctypelabel}" ></Label>
+      <CheckBox toolkit:CornerRadiusEffect.CornerRadius="5" Grid.Column="1"   BackgroundColor="Transparent" Color="{StaticResource themecolorf}" FlowDirection="LeftToRight" IsChecked="{Binding Path=DocPanelSwitch.ContractActive}"></CheckBox>
+     </Grid>
+     <!-- Invoice Filter-->
+     <Grid ColumnDefinitions=".5*,.5*"  HorizontalOptions="Center">
+      <Label Grid.Column="0" Text="Invoice" Style="{DynamicResource doctypelabel }" ></Label>
+      <CheckBox  Grid.Column="1" BackgroundColor="Transparent" Color="{StaticResource themecolorf}"   FlowDirection="LeftToRight" IsChecked="{Binding Path=DocPanelSwitch.InvoiceActive}"></CheckBox>
+     </Grid>
+     <!-- Information Filter-->
+     <Grid ColumnDefinitions=".5*,.5*"  HorizontalOptions="Center">
+      <Label Grid.Column="0" Text="Information" Style="{DynamicResource doctypelabel }" ></Label>
+      <CheckBox  Grid.Column="1" BackgroundColor="Transparent"  Color="{StaticResource themecolorf}" FlowDirection="LeftToRight" IsChecked="{Binding Path=DocPanelSwitch.InformationActive}"></CheckBox>
+     </Grid>
+    </StackLayout>
+    <Label
+        Padding="20"
+        FontSize="Subtitle"
+        HorizontalOptions="Start"
+FontFamily="PoppinsBlack"
+VerticalTextAlignment="Center"
+VerticalOptions="Center"
+     TextColor="{StaticResource themecolore}"
+TextTransform="Default"
+TextDecorations="Underline"
+        Text="FOLDERS ON:" />
+    <Grid ColumnDefinitions=".5*,.5*"  HorizontalOptions="Center">
+     <Label Grid.Column="0"  Text="Favourites" Style="{DynamicResource doctypelabel}" ></Label>
+     <CheckBox    Grid.Column="1" Color="{StaticResource themecolorf}" BackgroundColor="Transparent"  FlowDirection="LeftToRight"  IsChecked="{Binding Path=FavouriteActive}"></CheckBox>
+
+    </Grid>
+    <!-- Agent Filter-->
+    <Grid ColumnDefinitions=".5*,.5*"  HorizontalOptions="Center">
+     <Label Grid.Column="0" Text="Agents" Style="{DynamicResource doctypelabel }" ></Label>
+     <CheckBox  Grid.Column="1" Color="{StaticResource themecolorf}" BackgroundColor="Transparent" FlowDirection="LeftToRight"  IsChecked="{Binding Path=AgentActive}"></CheckBox>
+    </Grid>
+    <Button Margin="20" BackgroundColor="{StaticResource themecolora}" WidthRequest="200" Clicked="CloseFilters" Text="DONE" FontFamily="PoppinsBlack" BorderColor="{StaticResource themecolorf}" BorderWidth="4" FontSize="15" TextColor="{StaticResource themecolorf}" HorizontalOptions="Center" ></Button>
+   </StackLayout>
+  </ScrollView>
+ </StackLayout>
+ 
+</xct:Popup>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:toolkit="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             xmlns:calenda="clr-namespace:XCalendar.Forms.Views;assembly=XCalendar.Forms"
+	     xmlns:viewmodel="clr-namespace:Smartmoveapp.ViewModels" 
+	     Size="300,200"
+	     Color="{StaticResource themecolora}"
+             x:Class="Smartmoveapp.Views.DatePicker">
+ <toolkit:Popup.BindingContext >
+  <viewmodel:DateTimeViewModel>
+  </viewmodel:DateTimeViewModel>
+ </toolkit:Popup.BindingContext>
+ <StackLayout BackgroundColor="{StaticResource themecolora}" Orientation="Vertical"  Spacing="10" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="100">
+            <calenda:CalendarView NavigatedDate="{Binding  DateTimeSelected}">
+                
+            </calenda:CalendarView>
+  <Button Text="OK" FontFamily="Poppins" TextColor="{StaticResource themecolorf}" FontSize="12"  Clicked="DateSelected"></Button>
+        </StackLayout>
+     
+</toolkit:Popup>

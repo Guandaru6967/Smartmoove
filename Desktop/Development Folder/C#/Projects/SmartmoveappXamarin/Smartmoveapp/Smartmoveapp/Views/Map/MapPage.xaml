@@ -1,0 +1,17 @@
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Smartmoveapp.Views"
+	   xmlns:viewmodel="clr-namespace:Smartmoveapp.ViewModels"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+	   xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="Smartmoveapp.Views.MapPage">
+ 
+ <ContentPage.BindingContext>
+  <viewmodel:MapViewModel>
+  </viewmodel:MapViewModel>
+ </ContentPage.BindingContext>
+ 
+
+ 
+ <maps:Map x:Name="map" />
+</ContentPage>

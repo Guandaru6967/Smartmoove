@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+	   xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	  xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+	   NavigationPage.HasNavigationBar="False"
+             x:Class="Smartmoveapp.Views.Document.ScanningPage">
+ <ContentPage.Resources>
+  <Style TargetType="toolkit:TabViewItem">
+   <Setter Property="FontAttributes" Value="None"></Setter>
+   <Setter Property="FontFamily" Value="PoppinsBlack"></Setter>
+   <Setter Property="TextColor" Value="{StaticResource themecolore}"></Setter>
+   <Setter Property="TextColorSelected" Value="{StaticResource themecolorf}"></Setter>
+   <Setter Property="FontSize" Value="3"></Setter>
+   
+  </Style>
+ </ContentPage.Resources>
+    <ContentPage.Content>
+  <Grid BackgroundColor="{StaticResource themecolora}">
+   
+   <xct:CameraView x:Name="CameraViewPanel" BackgroundColor="{StaticResource themecolorf}" CaptureMode="Photo"  CameraOptions="Default"  FlashMode="Off"  MediaCaptured="CameraMediaCaptured">
+   
+
+   </xct:CameraView>
+   <toolkit:TabView SelectionChanged="ImageTabSelectionChanged"   TabStripPlacement="Bottom" TabStripBorderColor="{StaticResource themecolorf}" TabIndicatorColor="{StaticResource themecolora}" TabStripBackgroundColor="{StaticResource themecolora}" BackgroundColor="Transparent">
+    <toolkit:TabViewItem  Text="Single" FontSize="20">
+     <StackLayout BackgroundColor="Transparent" VerticalOptions="End" >
+      <ImageButton VerticalOptions="End" Margin="10" Clicked="TakePhoto" WidthRequest="100" HeightRequest="100" CornerRadius="50" Source="{toolkit:ImageResource Id=Smartmoveapp.Assets.labelled.takephotoicon.png}"></ImageButton>
+     </StackLayout>
+
+    </toolkit:TabViewItem>
+    <toolkit:TabViewItem FontFamily="PoppinsBlack" FontSize="15" Text="Batch" >
+     <Grid  BackgroundColor="Transparent">
+      <StackLayout  HeightRequest="100" BackgroundColor="Transparent">
+       <Button Margin="10" Clicked="DoneTakingBatchPhoto" CornerRadius="10" BackgroundColor="{StaticResource themecolora}" Text="done" FontFamily="PoppinsBlack" FontSize="20" TextColor="{StaticResource themecolorf}"></Button>
+      </StackLayout>
+      <StackLayout VerticalOptions="End">
+       <ImageButton  Margin="10 " Clicked="TakePhoto" VerticalOptions="End" WidthRequest="100" HeightRequest="100" CornerRadius="25" Source="{toolkit:ImageResource Id=Smartmoveapp.Assets.labelled.takephotoicon.png}"></ImageButton>
+      </StackLayout>
+     </Grid>
+    </toolkit:TabViewItem>
+   </toolkit:TabView>
+  </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

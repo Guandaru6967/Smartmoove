@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+	   xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+	 Size="480,640"
+	 IsLightDismissEnabled="False"
+	   xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Smartmoveapp.Views.Popups.ImageViewPopup">
+
+ <StackLayout Spacing="30">
+  <StackLayout Orientation="Horizontal" Spacing="20">
+   <Button BackgroundColor="{StaticResource themecolora}" Clicked="AcceptImage" CornerRadius="25" toolkit:ShadowEffect.Color="Black" toolkit:ShadowEffect.Opacity=".5" toolkit:ShadowEffect.OffsetX="5" toolkit:ShadowEffect.OffsetY="5" FontSize="25" Text="check_circle"   FontFamily="materialicon" TextColor="{StaticResource themecolorf}" WidthRequest="50" HeightRequest="50" ></Button>
+   <Button BackgroundColor="{StaticResource themecolora}" FontSize="25" Clicked="RemoveImage" CornerRadius="25" toolkit:ShadowEffect.Color="Black" toolkit:ShadowEffect.Opacity=".5" toolkit:ShadowEffect.OffsetX="5" toolkit:ShadowEffect.OffsetY="5" Text="delete"   FontFamily="materialicon" TextColor="{StaticResource themecolorf}" WidthRequest="50" HeightRequest="50" ></Button>
+  </StackLayout>
+  <Image WidthRequest="360" HeightRequest="480" MinimumWidthRequest="360" MinimumHeightRequest="480" Aspect="Fill" Margin="1" BackgroundColor="Transparent" toolkit:CornerRadiusEffect.CornerRadius="10" toolkit:ShadowEffect.Color="Black" toolkit:ShadowEffect.OffsetX="5" toolkit:ShadowEffect.OffsetY="5" toolkit:ShadowEffect.Opacity=".5" Source="{Binding ImageData,Converter={toolkit:ByteArrayToImageSourceConverter}}">
+  </Image>
+ </StackLayout>
+</xct:Popup>

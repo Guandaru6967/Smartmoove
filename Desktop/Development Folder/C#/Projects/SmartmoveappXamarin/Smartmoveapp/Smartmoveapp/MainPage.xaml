@@ -1,0 +1,682 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:models="clr-namespace:Smartmoveapp.ViewModels"
+	   xmlns:localConverters="clr-namespace:Smartmoveapp.Converters"
+             xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:local="clr-namespace:Smartmoveapp"
+	   xmlns:controls="clr-namespace:Smartmoveapp.Controls"
+             xmlns:viewmodel="clr-namespace:Smartmoveapp.ViewModels"
+	      NavigationPage.HasNavigationBar="False"
+	   xmlns:ffImages="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:sk="clr-namespace:Xamarin.Forms.Skeleton;assembly=Xamarin.Forms.Skeleton"
+             x:Class="Smartmoveapp.MainPage">
+    <ContentPage.BindingContext>
+        <models:HomeViewModel></models:HomeViewModel>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <Style x:Key="Divider" TargetType="BoxView">
+            <Setter Property="HeightRequest" Value="1" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="Color" Value="Gray" />
+            <Setter Property="Margin" Value="0, 5, 0, 5" />
+            <Setter Property="Opacity" Value="0.5" />
+        </Style>
+        <Style TargetType="{x:Type xct:TabViewItem}" x:Key="tabstyle" >
+
+            <Setter Property="TextColor" Value="{StaticResource themecolorc}"/>
+            <Setter Property="TextColorSelected" Value="{StaticResource themecolorf}"></Setter>
+   <Setter Property="IconSelected" Value="{StaticResource themecolorf}"></Setter>
+   <Setter Property="FontAttributesSelected" Value="Bold"></Setter>
+            <Setter Property="FontSize" Value="3"></Setter>
+            
+        </Style>
+        <Style x:Key="servicestyle" TargetType="{x:Type ContentView}">
+            
+             <Setter Property="xct:CornerRadiusEffect.CornerRadius" Value="30">
+
+            </Setter>
+            <Setter Property="HeightRequest" Value="150"></Setter>
+            <Setter Property="Margin" Value="7"/>
+            
+        </Style>
+        <Style TargetType="Label" x:Key="homelabel">
+            <Setter Property="FontAttributes" Value="Bold"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="TextColor" Value="{StaticResource themecolorc}"></Setter>
+   <Setter Property="Padding" Value="15,0,0,0"></Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="IconButton">
+            <Setter Property="TextColor" Value ="{StaticResource themecolorf}">
+               
+            </Setter>
+            <Setter Property="TextTransform" Value ="None">
+
+            </Setter>
+            <Setter Property="FontFamily" Value ="materialicon">
+
+            </Setter>
+            <Setter Property="FontSize" Value ="30">
+
+            </Setter>
+            <Setter Property="BackgroundColor" Value ="{StaticResource themecolora}">
+
+            </Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="LabelButton">
+            <Setter Property="TextColor" Value ="{StaticResource themecolorf}">
+
+            </Setter>
+            <Setter Property="TextTransform" Value ="None">
+
+            </Setter>
+            <Setter Property="FontFamily" Value ="Poppins">
+
+            </Setter>
+            <Setter Property="FontSize" Value ="30">
+
+            </Setter>
+            <Setter Property="BackgroundColor" Value ="{StaticResource themecolora}">
+
+            </Setter>
+        </Style>
+    
+        <ControlTemplate x:Key="service">
+            <AbsoluteLayout xct:CornerRadiusEffect.CornerRadius="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ffImages:CachedImage  xct:CornerRadiusEffect.CornerRadius="10" Margin="0" BackgroundColor="{StaticResource themecolora}" Source="{TemplateBinding ImageSource}" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill"></ffImages:CachedImage>
+                <FlexLayout JustifyContent="Center" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent">
+                    <Button BackgroundColor="#00000000" 
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            x:Name="imagetext" FontSize="20" 
+                            FontAttributes="Bold" TextColor="White"
+                            Text="Service">
+
+                    </Button>
+                </FlexLayout>
+            </AbsoluteLayout>
+        </ControlTemplate>
+        <ControlTemplate  x:Key="TabItemTemplate">
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <!--<Button
+                    
+                    
+                        Grid.Row="0"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        WidthRequest="30"
+                        HeightRequest="30"
+                        BackgroundColor="{StaticResource themecolora}"
+                        TextColor="{TemplateBinding TextColor}"
+                        FontSize="30"
+                        FontFamily="materialicon"
+                        Margin="0,30,0,0"
+                        Text="{TemplateBinding Text}" />-->
+                <Image
+                        Grid.Row="0"
+                        xct:IconTintColorEffect.TintColor="{TemplateBinding  CurrentTextColor}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        WidthRequest="30"
+                        HeightRequest="30"
+                        Margin="0,30,0,0"
+                        Source="{TemplateBinding CurrentIcon}" />
+                <Label
+                        Grid.Row="1"
+                        HorizontalOptions="Center"
+                        FontSize="14"
+                        Text="{TemplateBinding Text}"
+                        TextTransform="Default"
+                           FontAttributes="Bold"
+                        TextColor="{TemplateBinding CurrentTextColor}" />
+            </Grid>
+            </ControlTemplate>
+        <ControlTemplate x:Key="IconButtonControlTemplate">
+            <Grid xct:CornerRadiusEffect.CornerRadius="5" BackgroundColor="{StaticResource themecolora}" BindingContext="{Binding Source={RelativeSource Mode=TemplatedParent}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40">
+                        
+                    </ColumnDefinition>
+                    <ColumnDefinition Width="*" >
+
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Style="{StaticResource IconButton}" FontSize="{Binding IconFontSize}" Text="{Binding ButtonIcon}"></Button>
+                <Label Grid.Column="1" FontFamily="Poppins" TextColor="{StaticResource themecolorf}" VerticalTextAlignment="Center"  WidthRequest="100"  Text="{Binding ButtonText}" FontSize="{Binding TextFontSize}"></Label>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="ActionItem">
+            <StackLayout  Orientation="Horizontal" Margin="0,0,60,0" BackgroundColor="#0000" VerticalOptions="Center" HorizontalOptions="Center">
+                <Label  TextColor="{StaticResource themecolorf}"  
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontAttributes="Bold"
+		   
+                       HorizontalTextAlignment="Center"
+                       WidthRequest="{TemplateBinding ButtonSize}"
+                       BackgroundColor="#0000" 
+                        FontFamily="Poppins"
+                        FontSize="{TemplateBinding LabelFontSize}"
+                        Text="{TemplateBinding LabelText}">
+                </Label>
+                <Button  BackgroundColor="{StaticResource themecolora}" 
+                        xct:ShadowEffect.Color="Black"
+                        xct:ShadowEffect.OffsetX="1"
+                        xct:ShadowEffect.OffsetY="1"
+                        TextTransform="None"
+                        TextColor="{StaticResource themecolorf}"
+                        xct:ShadowEffect.Opacity=".5"
+                        Command="{TemplateBinding ButtonCommand}"
+                        xct:ShadowEffect.Radius="{TemplateBinding CornerRadius}"
+                        Text="{TemplateBinding ButtonIcon}" 
+                         WidthRequest="{TemplateBinding ButtonSize}"
+                         HeightRequest="{TemplateBinding ButtonSize}" 
+                        FontSize="{TemplateBinding ButtonFontSize}" 
+                         xct:CornerRadiusEffect.CornerRadius="{TemplateBinding CornerRadius}" 
+                         FontFamily="materialicon"></Button>
+            </StackLayout>
+        </ControlTemplate>
+       
+
+    </ContentPage.Resources>
+
+    <StackLayout Margin="0,0,0,0">
+  <xct:TabView BackgroundColor="{x:StaticResource themecolora}"  
+                     TabStripHeight="70"
+                     TabStripPlacement="Bottom" 
+		 IsTabTransitionEnabled="True"
+                     IsSwipeEnabled="False" >
+  
+   <xct:TabViewItem  Style="{StaticResource tabstyle}"  ControlTemplate="{StaticResource TabItemTemplate}"   Icon="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.homeicon.png}" Text="Home"   >
+
+    <xct:TabViewItem.Content>
+     <ScrollView HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="True"  VerticalScrollBarVisibility="Always" Orientation="Vertical">
+      <StackLayout x:Name="toplist" >
+       <FlexLayout Direction="Row"  AlignContent="Center" AlignItems="Center" JustifyContent="Center">
+
+        <Label Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" 
+                        Padding="0,0,0,0"
+                                  x:Name="label"
+                           Text="smartmoove" WidthRequest="250" 
+                                   HeightRequest="50"    FontFamily="Poppins"
+                                   FontAttributes="Bold" TextColor="{StaticResource themecolorc}" FontSize="25">
+
+        </Label>
+
+       </FlexLayout>
+       <FlexLayout  BackgroundColor="{StaticResource themecolorb}"  Direction="Row" JustifyContent="Center" AlignItems="Center">
+        <Button  Margin="10" Padding="0" CornerRadius="80"
+                                            FontFamily="materialicon"
+                                            TextTransform="None"
+                                            FontSize="30"
+                                            WidthRequest="60"
+                                            HeightRequest="60"
+	       Clicked="AddAgentPage"
+                                            TextColor="{StaticResource themecolora}" BackgroundColor="{StaticResource themecolorf}"
+                                           Text="add"></Button>
+        <ScrollView WidthRequest="290">
+         <CollectionView HeightRequest="80" x:Name="listing" 
+		     SelectionMode="Single"
+		     SelectionChanged="AgentSelected"
+		     IsVisible="{Binding HasAgencies}"
+		     
+                                                    ItemsSource="{Binding Agencies}">
+
+	<CollectionView.ItemsLayout>
+	 <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10">
+	 </LinearItemsLayout>
+	</CollectionView.ItemsLayout>
+
+	<CollectionView.ItemTemplate >
+	 <DataTemplate>
+	  <StackLayout>
+	   <Button BackgroundColor="{StaticResource themecolora}" 
+                                                    TextTransform="None"
+		 FontFamily="Poppins"
+                                                    CornerRadius="80"
+                                                    Margin="10"
+		 BindingContext="{Binding .}"
+                                                    HorizontalOptions="Center"
+                                                    Padding="0"
+                                        FontSize="12"
+		 
+		 Clicked="AgentButtonSelected"
+                                        WidthRequest="60"
+                                        HeightRequest="60"
+                                                    Text="{Binding Name,Converter={localConverters:StringWrapConverter Value=7}} "
+                                                    TextColor="{StaticResource themecolorc}">
+	   </Button>
+	  </StackLayout>
+	 </DataTemplate>
+	</CollectionView.ItemTemplate>
+
+         </CollectionView>
+        </ScrollView>
+       </FlexLayout>
+       <FlexLayout  Margin="0,20,0,0"  BackgroundColor="{StaticResource themecolora}" HeightRequest="160" Direction="Column">
+        <Label HorizontalTextAlignment="Start"
+                                   Padding="15,0,0,0"
+                                   Margin="0,-15,0,10" 
+                                   HeightRequest="40"
+                                   Text="Short Doc" 
+                                       
+                                   FontAttributes="Bold"
+                                   FontSize="20" 
+                                   TextColor="{StaticResource themecolorc}">
+
+        </Label>
+        <CollectionView  SelectionChanged="FolderView_SelectionChanged" SelectionMode="Single"  ItemsSource="{Binding Folders}">
+
+         <CollectionView.ItemsLayout>
+	<LinearItemsLayout Orientation="Horizontal" ItemSpacing="25">
+
+	</LinearItemsLayout>
+         </CollectionView.ItemsLayout>
+
+         <CollectionView.ItemTemplate>
+	<DataTemplate>
+	 <FlexLayout Direction="Column">
+	  <ffImages:CachedImage
+                                     HorizontalOptions="Center" Margin="0,0,0,0" 
+                                     VerticalOptions="Center"
+                                     WidthRequest="80"
+                                     HeightRequest="80"
+                                     BackgroundColor="{StaticResource themecolora}"
+                                 IsVisible="{Binding IsFavourite}"
+                                     Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.favourite_folder.png}">
+
+	  </ffImages:CachedImage>
+	  <ffImages:CachedImage
+                                     HorizontalOptions="Center" Margin="0,0,0,0" 
+                                     VerticalOptions="Center"
+                                     WidthRequest="80"
+                                     HeightRequest="80"
+                                     BackgroundColor="{StaticResource themecolora}"
+                             IsVisible="{Binding IsFavourite,Converter={xct:InvertedBoolConverter}}"
+                                     Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.foldericon.png}">
+
+	  </ffImages:CachedImage>
+	  <Label 
+                                                FontSize="17"
+                                                FontAttributes="Bold"
+                                                HorizontalTextAlignment="Center"
+                                                TextColor="{StaticResource themecolorc}"
+                                                Text="{Binding FolderName}">
+
+	  </Label>
+	  <Label FontSize="12"
+                                                   Padding="0,0,0,5"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="Center"
+                                                   HorizontalTextAlignment="Center"
+                                                   TextColor="{StaticResource themecolore}"
+                                                   Text="{Binding Created_Dt ,StringFormat='{0:MM/dd/yyyy}'}"
+                                                FontAttributes="Bold" >
+
+	  </Label>
+	 </FlexLayout>
+	</DataTemplate>
+         </CollectionView.ItemTemplate>
+         <CollectionView.Footer >
+	<StackLayout VerticalOptions="EndAndExpand" Margin="0,0,0,0">
+	 
+	 <ImageButton
+HorizontalOptions="Center" 
+VerticalOptions="End"
+WidthRequest="60"
+	  Margin="20,15,0,0"
+HeightRequest="60"
+	  Clicked="AddFolder"
+BackgroundColor="{StaticResource themecolora}"
+Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.addfolder.png}">
+	 </ImageButton>
+	</StackLayout>
+	
+         </CollectionView.Footer>
+
+        </CollectionView>
+       </FlexLayout>
+       <FlexLayout Direction="Column" HeightRequest="300" BackgroundColor="{StaticResource themecolorb}" >
+        <StackLayout>
+         <Label FontAttributes="Bold" FontSize="20" HeightRequest="30"
+                                           TextColor="{StaticResource themecolorc}" 
+                                           Padding="15,0,0,0"
+                                           Margin="0,10,0,0"
+                                           Text="Services"></Label>
+         <Label  HeightRequest="100"
+                                        Padding="15,-20,0,-20"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalOptions="Center"
+                                        TextColor="{StaticResource themecolore}"
+                                           FontSize="15" FontAttributes="Bold"  >
+	Lorem Ipsum Generator Generate Lorem Ipsum placeholder text.Select the number of characters, words, sentences or paragraphs, and hit generate!</Label>
+         <Grid BackgroundColor="{StaticResource themecolorb}">
+	<Grid.ColumnDefinitions>
+	 <ColumnDefinition Width="Auto">
+
+	 </ColumnDefinition>
+	 <ColumnDefinition Width="Auto">
+
+	 </ColumnDefinition>
+	</Grid.ColumnDefinitions>
+	<local:ServiceContent  ImageSource="{xct:ImageResource Smartmoveapp.Assets.labelled.service1.jpg}" ControlTemplate="{StaticResource service}"     Grid.Column="0" Grid.Row="0" Style="{x:StaticResource servicestyle}">
+
+
+
+	</local:ServiceContent>
+	<local:ServiceContent ImageSource="{xct:ImageResource Smartmoveapp.Assets.labelled.service2.jpg}" ControlTemplate="{StaticResource  service}"   Grid.Column="0" Grid.Row="1"  Style="{x:StaticResource servicestyle}">
+
+
+	</local:ServiceContent>
+	<local:ServiceContent ImageSource="{xct:ImageResource Smartmoveapp.Assets.labelled.service3.jpg}"  ControlTemplate="{StaticResource service}"  Grid.Column="1" Grid.Row="0" Style="{x:StaticResource servicestyle}">
+
+
+
+	</local:ServiceContent>
+	<local:ServiceContent ImageSource="{xct:ImageResource Smartmoveapp.Assets.labelled.service4.jpg}" ControlTemplate="{StaticResource  service}"   Grid.Column="1" Grid.Row="1"  Style="{x:StaticResource servicestyle}">
+
+
+	</local:ServiceContent>
+         </Grid>
+        </StackLayout>
+       </FlexLayout>
+       <!--Map View-->
+       <ContentView HeightRequest="600" >
+        <StackLayout Margin="0,5,0,0">
+         <Label Style="{StaticResource homelabel}" Text="Voucher Map" ></Label>
+         <Label Margin="15,10,0,10" HorizontalOptions="Center" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="15" TextColor="{StaticResource themecolore}" >
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco .
+         </Label>
+         <ContentView>
+	<map:Map MapClicked="OnMapClicked"  HeightRequest="400"/>
+         </ContentView>
+        </StackLayout>
+       </ContentView>
+
+      </StackLayout>
+     </ScrollView>
+    </xct:TabViewItem.Content>
+   </xct:TabViewItem>
+   <xct:TabViewItem Style="{StaticResource tabstyle}"   ControlTemplate="{StaticResource TabItemTemplate}"  Icon="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.verlauficon.png}" Text="History" >
+                <xct:TabViewItem.Content>
+                    <ScrollView>
+                        <ContentView>
+                            
+                        </ContentView>
+                    </ScrollView>
+                </xct:TabViewItem.Content>
+
+            </xct:TabViewItem>
+   <xct:TabViewItem Style="{StaticResource tabstyle}"   ControlTemplate="{StaticResource TabItemTemplate}" Text="Partner" Icon="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.vertragspartnericon.png}" >
+                <xct:TabViewItem.Content>
+                    <ScrollView>
+                        <ContentView>
+
+                        </ContentView>
+                    </ScrollView>
+                </xct:TabViewItem.Content>
+
+            </xct:TabViewItem>
+   <xct:TabViewItem TabTapped="OnEnterFolderPage" Style="{StaticResource tabstyle}"  ControlTemplate="{StaticResource TabItemTemplate}" Text="Doc" Icon="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.docicon.png}" >
+    <xct:TabViewItem.Content>
+     <ContentView>
+      <StackLayout >
+       <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+        <Label  HorizontalOptions="Center" TextColor="{StaticResource themecolorf}" FontFamily="Poppins" FontSize="30" FontAttributes="Bold" Padding="0,0,30,0">
+         smartmoove
+        </Label>
+        <ImageButton  Margin="0,0,0,0" HorizontalOptions="End"  IsVisible="false"  BackgroundColor="Transparent"  WidthRequest="30" HeightRequest="30" xct:IconTintColorEffect.TintColor="{StaticResource themecolorf}" Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.mehricon.png}"></ImageButton>
+
+       </StackLayout>
+       <Frame Margin="0,0,0,10" BackgroundColor="{StaticResource themecolorb}" VerticalOptions="Center">
+        <StackLayout  Orientation="Horizontal" Spacing="25" VerticalOptions="Center" HorizontalOptions="Center">
+
+         <ImageButton WidthRequest="50" HeightRequest="50" BackgroundColor="{StaticResource themecolora}" CornerRadius="25"  Padding="14" Source="{Binding FolderViewIcon,Converter={xct:ImageResourceConverter}}" Clicked="ToggleFolderView"></ImageButton>
+         <ImageButton WidthRequest="50" HeightRequest="50" BackgroundColor="{StaticResource themecolora}" CornerRadius="25"  Padding="10" Source="{xct:ImageResource  Id=Smartmoveapp.Assets.labelled.add_folder.png}" Clicked="AddFolder"></ImageButton>
+         <ImageButton WidthRequest="50" HeightRequest="50" BackgroundColor="{StaticResource themecolora}" CornerRadius="25"  Padding="14" Source="{xct:ImageResource  Id=Smartmoveapp.Assets.labelled.search.png}" Clicked="ToggleSearch">
+         </ImageButton>
+         <ImageButton IsVisible="True" Clicked="SortFolders" WidthRequest="50" HeightRequest="50" BackgroundColor="{StaticResource themecolora}" CornerRadius="25"  Padding="14" Source="{xct:ImageResource  Id=Smartmoveapp.Assets.labelled.sorting.png}">
+         </ImageButton>
+         <ImageButton WidthRequest="50" HeightRequest="50" BackgroundColor="{StaticResource themecolora}" CornerRadius="25"  Padding="14" Source="{xct:ImageResource  Id=Smartmoveapp.Assets.labelled.filter_icon.png}"  Clicked ="ToggleFolderPanel">
+         </ImageButton>
+         
+        </StackLayout>
+       </Frame>
+       <StackLayout HorizontalOptions="Center" Orientation="Horizontal"       IsVisible="{Binding SearchActive}">
+        <ImageButton WidthRequest="20"  HorizontalOptions="Center"  Padding="0" BackgroundColor="Transparent" Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.search.png}" HeightRequest="20"></ImageButton>
+        <Entry  Placeholder="Search through your folders" 
+                                    TextChanged="FolderSerachEntryTextChanged"
+	
+                                    x:Name="FilterEntry"
+                                   BackgroundColor="{StaticResource themecolora}"
+                                   TextColor="{StaticResource themecolorf}"
+                                   Margin="20,0,0,0"
+                                  PlaceholderColor="{StaticResource themecolore}"
+                                  FlowDirection="LeftToRight"
+                                  FontSize="17"
+                                   WidthRequest="250"
+                                   IsPassword="False"
+                                   
+                                   FontFamily="Poppins"
+                                   ></Entry>
+
+       </StackLayout>
+       <!--Folders -->
+     
+	<AbsoluteLayout >
+
+	 <!--Grid View-->
+	 <CollectionView 
+                                    SelectionChanged="FolderView_SelectionChanged"
+                                    BackgroundColor="{StaticResource themecolora}"
+                                    SelectionMode="Single"  
+	  x:Name="folderCollectionGrid"
+	   IsVisible="{Binding IsFolderView}"
+                                    ItemsSource="{Binding FolderListing}">
+	  <CollectionView.ItemsLayout>
+	   <GridItemsLayout  Span="3" VerticalItemSpacing="12" HorizontalItemSpacing="10" Orientation="Vertical">
+	   </GridItemsLayout>
+	  </CollectionView.ItemsLayout>
+
+	  <CollectionView.ItemTemplate>
+
+	   <DataTemplate >
+	    
+	    <FlexLayout BackgroundColor="{StaticResource themecolora}" Direction="Column" JustifyContent="Center" AlignItems="Center">
+	     
+	  <VisualStateManager.VisualStateGroups>
+	   <VisualStateGroup x:Name="CommonStates">
+	    <VisualState Name="Selected"> 
+	     <VisualState.Setters>
+	      <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+	      
+	     </VisualState.Setters>
+	    </VisualState>
+	   </VisualStateGroup>
+	  </VisualStateManager.VisualStateGroups>
+	
+	  <Grid BackgroundColor="Transparent" WidthRequest="80" HeightRequest="80" IsVisible="{Binding IsFavourite,Converter={xct:InvertedBoolConverter}} "    >
+	   
+	   <ffImages:CachedImage                         HorizontalOptions="Center" Margin="0,0,0,0" 
+                            VerticalOptions="Center"
+                        WidthRequest="80"
+                        HeightRequest="80"
+
+                        BackgroundColor="{StaticResource themecolora}"
+                        Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.foldericon.png}">
+
+	   </ffImages:CachedImage>
+	  
+	   <StackLayout Padding="15" >
+	    <CollectionView  SelectionChanged="ImagesOnFolderSelected" SelectionMode="Single"  BackgroundColor="Transparent" ItemsSource="{Binding Documents}">
+	     <CollectionView.ItemsLayout>
+	      <GridItemsLayout HorizontalItemSpacing="0" VerticalItemSpacing="2" Orientation="Vertical" Span="2">
+
+	      </GridItemsLayout>
+	     </CollectionView.ItemsLayout>
+	     <CollectionView.ItemTemplate>
+	      <DataTemplate>
+
+	       <ffImages:CachedImage                       
+	        HorizontalOptions="Center"
+                  VerticalOptions="Center"
+              WidthRequest="25"
+              HeightRequest="25"
+ BindingContext="{Binding .}" 
+              BackgroundColor="Transparent"
+				         xct:CornerRadiusEffect.CornerRadius="5"
+              Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.DocImage.jpg}"></ffImages:CachedImage>
+
+	      </DataTemplate>
+	     </CollectionView.ItemTemplate>
+
+	    </CollectionView>
+	   
+	   </StackLayout>
+	
+	  </Grid>
+	     
+
+	     <ffImages:CachedImage                           HorizontalOptions="Center" Margin="0,0,0,0" 
+       VerticalOptions="Center"
+   WidthRequest="80"
+   HeightRequest="80"
+   BackgroundColor="{StaticResource themecolora}"
+   IsVisible="{Binding IsFavourite} "    
+   Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.favourite_folder.png}">
+
+	     </ffImages:CachedImage>
+
+
+	     <Label 
+                                                FontSize="17"
+                                                FontAttributes="Bold"
+                                                HorizontalTextAlignment="Center"
+                                                 FontFamily="Poppins"
+                                                TextColor="{StaticResource themecolorc}"
+                                                Text="{Binding FolderName}">
+
+	     </Label>
+	     <Label FontSize="15"
+                                                    Padding="0,0,0,5"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="Center"
+				     FontFamily="Poppins"
+                                                    HorizontalTextAlignment="Center"
+                                                    TextColor="{StaticResource themecolore}"
+                                                    Text="{Binding Created_Dt ,StringFormat='{0:dd/MM/yy}'}"
+                                                FontAttributes="Bold" >
+
+	     </Label>
+	     <ImageButton Clicked="FolderOptions" BindingContext="{Binding .}" BackgroundColor="Transparent" Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.solid_dotted_menu.png}" WidthRequest="30" HeightRequest="30"  Padding="5"  ></ImageButton>
+	    </FlexLayout>
+	   </DataTemplate>
+	  </CollectionView.ItemTemplate>
+
+	 </CollectionView>
+	 <!--List View-->
+        <CollectionView  IsGrouped="True"  SelectionChanged="FolderView_SelectionChanged" 
+		        x:Name="folderCollectionList"
+ BackgroundColor="{StaticResource themecolora}" ItemsSource="{Binding FolderGroups}"
+ SelectionMode="Single"  IsVisible="{Binding IsFolderView,Converter={xct:InvertedBoolConverter}}"  >
+         <CollectionView.ItemsLayout>
+	<LinearItemsLayout Orientation="Vertical" ItemSpacing="10"></LinearItemsLayout>
+         </CollectionView.ItemsLayout>
+         <CollectionView.GroupHeaderTemplate>
+	<DataTemplate>
+	 <StackLayout Spacing="10" HorizontalOptions="Center">
+	  <Label Text="{Binding Name}"  Padding="10,0,0,0" FontFamily="PoppinsBlack"  TextColor="{StaticResource themecolorf}" TextTransform="Uppercase"></Label>
+
+	 </StackLayout>
+	</DataTemplate>
+         </CollectionView.GroupHeaderTemplate>
+         <CollectionView.ItemTemplate>
+	<DataTemplate>
+	 <SwipeView BackgroundColor="{StaticResource themecolora}">
+	  <SwipeView.LeftItems>
+	   <SwipeItems>
+	    <SwipeItem Text="Favorite" BindingContext="{Binding .}"
+                       IconImageSource="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.starred.png}"
+                       BackgroundColor="Transparent"
+		     xct:IconTintColorEffect.TintColor="{StaticResource themecolorf}"
+                       Invoked="OnFavoriteSwipeItemInvoked" />
+	    <SwipeItem Text="Delete"
+		        BindingContext="{Binding .}"
+		     xct:IconTintColorEffect.TintColor="{StaticResource themecolorf}"
+                       IconImageSource="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.deletefolder.png}"
+                       BackgroundColor="Transparent"
+                       Invoked="OnDeleteSwipeItemInvoked" />
+	    <SwipeItem Text="Lock"
+      BindingContext="{Binding .}"
+		     IsVisible="{Binding LockCode,Converter={xct:IsNullOrEmptyConverter}}"
+		     xct:IconTintColorEffect.TintColor="{StaticResource themecolorf}"
+          IconImageSource="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.deletefolder.png}"
+          BackgroundColor="Transparent"
+          Invoked="OnLockFolderSwipeItemInvoked" />
+	    
+	   </SwipeItems>
+	  </SwipeView.LeftItems>
+	  <SwipeView.Content>
+
+
+	   <StackLayout  Orientation="Horizontal" Margin="8" BackgroundColor="{StaticResource themecolora}">
+	    <VisualStateManager.VisualStateGroups>
+	     <VisualStateGroup x:Name="CommonStates">
+	      <VisualState x:Name="Selected">
+	       <VisualState.Setters>
+	        <Setter Property="BackgroundColor" Value="{StaticResource themecolorb}"></Setter>
+	       </VisualState.Setters>
+
+	      </VisualState>
+	      <VisualState x:Name="Normal">
+	       <VisualState.Setters>
+	        <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+	       </VisualState.Setters>
+
+	      </VisualState>
+	     </VisualStateGroup>
+	    </VisualStateManager.VisualStateGroups>
+	    <StackLayout Orientation="Horizontal">
+
+
+	     <ImageButton IsVisible="{Binding IsFavourite,Converter={xct:InvertedBoolConverter}}" WidthRequest="40" HeightRequest="40"  Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.foldericon.png}"></ImageButton>
+	    <ImageButton  IsVisible="{Binding IsFavourite}" WidthRequest="40" HeightRequest="40" Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.favourite_folder.png}"></ImageButton>
+	    <Label VerticalOptions="Center" HorizontalTextAlignment="Center" Text="{Binding FolderName}" FontFamily="Poppins" FontSize="13" TextColor="{StaticResource themecolorf}"></Label>
+	    </StackLayout>
+	    <StackLayout Orientation="Horizontal" Padding="10">
+	     <ImageButton  Clicked="FolderOptions" BindingContext="{Binding .}" BackgroundColor="Transparent" Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.solid_dotted_menu.png}" WidthRequest="30" HeightRequest="30"  Padding="15"  ></ImageButton>
+	    </StackLayout>
+	   </StackLayout>
+	  </SwipeView.Content>
+	 </SwipeView>
+	</DataTemplate>
+         </CollectionView.ItemTemplate>
+        </CollectionView>
+       </AbsoluteLayout>
+
+      </StackLayout>
+     </ContentView>
+    </xct:TabViewItem.Content>
+
+   </xct:TabViewItem>
+   <xct:TabViewItem Style="{StaticResource tabstyle}"  ControlTemplate="{StaticResource TabItemTemplate}" Text="Menu" Icon="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.mehricon.png}" >
+                <xct:TabViewItem.Content>
+                    <ScrollView>
+                        <ContentView>
+                        </ContentView>
+                    </ScrollView>
+                </xct:TabViewItem.Content>
+
+            </xct:TabViewItem>
+
+       </xct:TabView>
+    </StackLayout>
+
+
+</ContentPage>

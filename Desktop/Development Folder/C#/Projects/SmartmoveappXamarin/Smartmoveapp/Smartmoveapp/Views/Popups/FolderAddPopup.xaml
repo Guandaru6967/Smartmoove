@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+	 Size="300,300"
+	 xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Smartmoveapp.Views.Popups.FolderAddPopup">
+
+ <StackLayout>
+  <Label Text="Would you like to scan a document into the new folder or add folder manually?"
+                VerticalOptions="CenterAndExpand" 
+         HorizontalTextAlignment="Center"
+         TextColor="{StaticResource themecolorf}"
+         FontFamily="PoppinsBlack"
+         Margin="10"
+         FontSize="Medium"
+        
+                HorizontalOptions="CenterAndExpand" />
+  <Grid ColumnDefinitions=".5*,.5*" Margin="10">
+   <Button Grid.Column="0" Text="Scan" Clicked="AddFromScan" FontFamily="PoppinsBlack"  FontSize="12" TextColor="{StaticResource themecolorf}" BorderColor="{StaticResource themecolorf}" BackgroundColor="{StaticResource themecolora}"></Button>
+   <Button Grid.Column="1" Text="Add Manually" Clicked="AddManually" FontFamily="PoppinsBlack" FontSize="12" BackgroundColor="{StaticResource themecolorf}" TextColor="{StaticResource themecolora}"></Button>
+  </Grid>
+ </StackLayout>
+</xct:Popup>

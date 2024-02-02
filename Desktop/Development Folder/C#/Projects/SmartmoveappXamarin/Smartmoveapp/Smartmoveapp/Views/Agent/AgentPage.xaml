@@ -1,0 +1,478 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	   xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+	   NavigationPage.HasNavigationBar="True"
+	   xmlns:cardview="clr-namespace:PanCardView;assembly=PanCardView"
+	   BackgroundColor="{StaticResource themecolora}"
+	   NavigationPage.HasBackButton="True"
+	   xmlns:local="clr-namespace:Smartmoveapp.Views.Agent"
+             x:Class="Smartmoveapp.Views.Agent.AgentPage">
+
+ <NavigationPage.TitleView>
+  <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+   <Label Text="{Binding Path=Agent.Name}" TextTransform="Uppercase" Padding="0,0,20,0" VerticalTextAlignment="Center" VerticalOptions="Center" FontFamily="PoppinsBlack" FontSize="Large" TextColor="{StaticResource themecolorf}" TextDecorations="Underline" HorizontalOptions="Center" HorizontalTextAlignment="Center">
+    
+   </Label>
+  </StackLayout>
+ </NavigationPage.TitleView>
+ <ContentPage.Resources>
+  <Style x:Key="LabelKey" TargetType="Label">
+   <Setter Property="FontFamily" Value="PoppinsBlack"></Setter>
+   <Setter Property="FontSize" Value="15"></Setter>
+   <Setter Property="TextColor" Value="{StaticResource themecolorf}"></Setter>
+   <Setter Property="HorizontalOptions" Value="Center"></Setter>
+   <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+   <Setter Property="Grid.Column" Value="0"></Setter>
+  </Style>
+  <Style x:Key="LabelValue" TargetType="Label">
+   <Setter Property="FontSize" Value="15"></Setter>
+   <Setter Property="TextColor" Value="{StaticResource themecolore}"></Setter>
+   <Setter Property="HorizontalOptions" Value="Center"></Setter>
+   <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+   <Setter Property="Grid.Column" Value="1"></Setter>
+  </Style>
+
+  <DataTemplate x:Key="ContractTemplate" >
+   <StackLayout Spacing="20">
+    <ImageButton WidthRequest="100" HeightRequest="100" Source="{toolkit:ImageResource Id=Smartmoveapp.Assets.labelled.DocImage.jpg}" ></ImageButton>
+    <StackLayout Spacing="30">
+
+     <StackLayout  HorizontalOptions="Center">
+      <Grid Grid.ColumnSpan="2" >
+       <Label 
+  VerticalOptions="Center"
+                        
+  HorizontalOptions="Center"
+ HorizontalTextAlignment="End"
+  VerticalTextAlignment="Center"
+  Grid.Column="0" FontSize="13" FontFamily="PoppinsBlack" TextTransform="None" 
+               
+               TextColor="{StaticResource themecolorc}" Text="Contract Type"></Label>
+       <Label   Grid.Column="1"
+  VerticalOptions="Center"
+  HorizontalOptions="Center"
+    HeightRequest="40"
+                     BackgroundColor="{StaticResource themecolora}"
+                  HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+  FontSize="13" FontFamily="Poppins" TextTransform="None"
+                    TextColor="{StaticResource themecolorc}" 
+    Text="{Binding  ContractDetail.InfoSubject}"></Label>
+      </Grid>
+      <StackLayout>
+       <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+      </StackLayout>
+     </StackLayout>
+
+     <StackLayout HorizontalOptions="Center">
+      <Grid Grid.ColumnSpan="2" >
+       <Label  Grid.Column="0" 
+  VerticalOptions="Center"
+  HorizontalOptions="Center"
+  HorizontalTextAlignment="Center"
+  VerticalTextAlignment="Center"
+  FontSize="13" FontFamily="PoppinsBlack" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="Start of Contract"></Label>
+       <Button BackgroundColor="{StaticResource themecolora}"
+   VerticalOptions="Center"
+  HorizontalOptions="Center"
+  HeightRequest="40"
+   Grid.Column="1" FontSize="13" FontFamily="Poppins" TextTransform="None" 
+   TextColor="{StaticResource themecolorc}" 
+   Text="{Binding Path=ContractDetail.StartDate,StringFormat='{1:mm:hh:MM-dd-yy}'}">
+
+       </Button>
+      </Grid>
+      <StackLayout>
+       <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+      </StackLayout>
+     </StackLayout>
+
+     <StackLayout HorizontalOptions="Center">
+      <Grid Grid.ColumnSpan="2" >
+       <Label  Grid.Column="0" 
+  VerticalOptions="Center"
+  HorizontalOptions="Center"
+  HorizontalTextAlignment="Center"
+  VerticalTextAlignment="Center"
+  FontSize="13" FontFamily="PoppinsBlack" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="End of Contract"></Label>
+       <Button BackgroundColor="{StaticResource themecolora}"
+   VerticalOptions="Center"
+  HorizontalOptions="Center"
+  HeightRequest="40"
+   Grid.Column="1" FontSize="13" FontFamily="Poppins" TextTransform="None" 
+   TextColor="{StaticResource themecolorc}" 
+   Text="{Binding Path=ContractDetail.EndDate,StringFormat='{1:mm:hh:MM-dd-yy}'}">
+
+       </Button>
+      </Grid>
+      <StackLayout>
+       <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+      </StackLayout>
+     </StackLayout>
+     
+     <StackLayout HorizontalOptions="Center">
+      <Grid Grid.ColumnSpan="2" >
+       <Label  Grid.Column="0" 
+  VerticalOptions="Center"
+  HorizontalOptions="Center"
+  HorizontalTextAlignment="Center"
+  VerticalTextAlignment="Center"
+  FontSize="13" FontFamily="PoppinsBlack" TextTransform="None" TextColor="{StaticResource themecolorc}" Text="Auto Renew"></Label>
+
+       <Picker 
+               Grid.Column="1"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"
+               BackgroundColor="{StaticResource themecolora}"  toolkit:IconTintColorEffect.TintColor="{StaticResource themecolora}" 
+               Title="Auto Renew" 
+               TitleColor="{StaticResource themecolora}"
+               FontFamily="Poppins" 
+               FontSize="13" 
+               TextTransform="None" 
+               TextColor="{StaticResource themecolorc}" ></Picker>
+      </Grid>
+      <StackLayout>
+       <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+      </StackLayout>
+     </StackLayout>
+
+     <StackLayout  HorizontalOptions="Center">
+      <Grid Grid.ColumnSpan="2" >
+       <Label 
+  VerticalOptions="Center"
+                        
+  HorizontalOptions="Center"
+ HorizontalTextAlignment="End"
+  VerticalTextAlignment="Center"
+  Grid.Column="0" FontSize="13" FontFamily="PoppinsBlack" TextTransform="None" 
+               
+               TextColor="{StaticResource themecolorc}" Text="Customer Number"></Label>
+       <Label   Grid.Column="1"
+  VerticalOptions="Center"
+  HorizontalOptions="Center"
+    HeightRequest="40"
+                     BackgroundColor="{StaticResource themecolora}"
+                  HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+  FontSize="13" FontFamily="Poppins" TextTransform="None"
+                    TextColor="{StaticResource themecolorc}" 
+    Text="{Binding  Path=ContractDetail.CustomerNr}"></Label>
+      </Grid>
+      <StackLayout>
+       <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+      </StackLayout>
+     </StackLayout>
+
+     <StackLayout  HorizontalOptions="Center">
+      <Grid Grid.ColumnSpan="2" >
+       <Label 
+  VerticalOptions="Center"
+                        
+  HorizontalOptions="Center"
+ HorizontalTextAlignment="End"
+  VerticalTextAlignment="Center"
+  Grid.Column="0" FontSize="13" FontFamily="PoppinsBlack" TextTransform="None" 
+               
+               TextColor="{StaticResource themecolorc}" Text="Contract Number"></Label>
+       <Label   Grid.Column="1"
+  VerticalOptions="Center"
+  HorizontalOptions="Center"
+    HeightRequest="40"
+                     BackgroundColor="{StaticResource themecolora}"
+                  HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+  FontSize="13" FontFamily="Poppins" TextTransform="None"
+                    TextColor="{StaticResource themecolorc}" 
+    Text="{Binding  ContractDetail.ContractNr}"></Label>
+      </Grid>
+      <StackLayout>
+       <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+      </StackLayout>
+     </StackLayout>
+
+    </StackLayout>
+
+   </StackLayout>
+   
+  </DataTemplate>
+
+  <DataTemplate x:Key="InvoiceTemplate">
+   <StackLayout Spacing="35">
+    <Label Text="{Binding DocType}" FontSize="10" Padding="14" HorizontalOptions="Center"  FontFamily="PoppinsBlack" TextColor="{StaticResource themecolorf}" HorizontalTextAlignment="Center"></Label>
+    <ImageButton WidthRequest="200" HeightRequest="200" Source="{toolkit:ImageResource Id=Smartmoveapp.Assets.labelled.DocImage.jpg}" ></ImageButton>
+    <StackLayout Spacing="30">
+     <StackLayout  HorizontalOptions="Center">
+      <Grid Grid.ColumnSpan="2" >
+       <Label 
+ VerticalOptions="Center"
+                        
+ HorizontalOptions="Center"
+HorizontalTextAlignment="End"
+ VerticalTextAlignment="Center"
+ Grid.Column="0" FontSize="15" FontFamily="PoppinsBlack" TextTransform="None" 
+              
+              TextColor="{StaticResource themecolorc}" Text="Business"></Label>
+       <Label   Grid.Column="1"
+ VerticalOptions="Center"
+ HorizontalOptions="Center"
+   HeightRequest="40"
+                    BackgroundColor="{StaticResource themecolora}"
+                  
+ FontSize="15" FontFamily="Poppins" TextTransform="None"
+                   TextColor="{StaticResource themecolorc}" 
+   Text="{Binding Name}"></Label>
+      </Grid>
+      <StackLayout>
+       <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+      </StackLayout>
+     </StackLayout>
+
+     <StackLayout  HorizontalOptions="Center">
+      <Grid Grid.ColumnSpan="2" >
+       <Label 
+ VerticalOptions="Center"
+                        
+ HorizontalOptions="Center"
+HorizontalTextAlignment="End"
+ VerticalTextAlignment="Center"
+ Grid.Column="0" FontSize="15" FontFamily="PoppinsBlack" TextTransform="None" 
+              
+              TextColor="{StaticResource themecolorc}" Text="Amount"></Label>
+       <Label   Grid.Column="1"
+ VerticalOptions="Center"
+ HorizontalOptions="Center"
+   HeightRequest="40"
+                    BackgroundColor="{StaticResource themecolora}"
+                 HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+ FontSize="15" FontFamily="Poppins" TextTransform="None"
+                   TextColor="{StaticResource themecolorc}" 
+   Text="{Binding  InvoiceDetail.TotalPrice}"></Label>
+      </Grid>
+      <StackLayout>
+       <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+      </StackLayout>
+     </StackLayout>
+     <StackLayout  HorizontalOptions="Center">
+      <Grid Grid.ColumnSpan="2" >
+       <Label 
+ VerticalOptions="Center"
+                        
+ HorizontalOptions="Center"
+HorizontalTextAlignment="End"
+ VerticalTextAlignment="Center"
+ Grid.Column="0" FontSize="15" FontFamily="PoppinsBlack" TextTransform="None" 
+              
+              TextColor="{StaticResource themecolorc}" Text="Date Created"></Label>
+       <Label   Grid.Column="1"
+ VerticalOptions="Center"
+ HorizontalOptions="Center"
+   HeightRequest="40"
+                    BackgroundColor="{StaticResource themecolora}"
+                 HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center" 
+ FontSize="15" FontFamily="Poppins" TextTransform="None" 
+                   TextColor="{StaticResource themecolorc}" 
+   Text="{Binding InvoiceDetail. Created_Dt,StringFormat='{0:mm:hh:MM-dd-yy}'}"></Label>
+      </Grid>
+      <StackLayout>
+       <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+      </StackLayout>
+     </StackLayout>
+     <StackLayout BindingContext="{x:Binding Document}"  HorizontalOptions="Center">
+      <Grid Grid.ColumnSpan="2" BindingContext="{x:Binding Document}" >
+       <Label 
+ VerticalOptions="Center"
+ HorizontalOptions="Center"
+HorizontalTextAlignment="End"
+ VerticalTextAlignment="Center"
+ Grid.Column="0" FontSize="15" FontFamily="PoppinsBlack" TextTransform="None" 
+ TextColor="{StaticResource themecolorc}" Text="Tax">
+
+       </Label>
+       <Label   Grid.Column="1"
+  VerticalOptions="Center"
+  HorizontalOptions="Center"
+  HeightRequest="40"
+  BackgroundColor="{StaticResource themecolora}"
+  HorizontalTextAlignment="Center"
+  VerticalTextAlignment="Center"
+  FontSize="15" FontFamily="Poppins" TextTransform="None"
+  TextColor="{StaticResource themecolorc}" 
+  Text="{Binding InvoiceDetail.Tax, FallbackValue='Not Set'}"></Label>
+      </Grid>
+      <StackLayout>
+       <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+      </StackLayout>
+     </StackLayout>
+
+    </StackLayout>
+   </StackLayout>
+  </DataTemplate>
+  <DataTemplate x:Key="InformationTemplate">
+   <StackLayout Spacing="20">
+    <Label Text="{Binding DocType}" FontSize="10" Padding="14"  FontFamily="PoppinsBlack" TextColor="{StaticResource themecolorf}" HorizontalTextAlignment="Center"></Label>
+    <ImageButton WidthRequest="150" Margin="10" BackgroundColor="{StaticResource themecolora}" toolkit:ShadowEffect.Color="Black" toolkit:ShadowEffect.Opacity=".5" toolkit:ShadowEffect.OffsetX="5" toolkit:ShadowEffect.OffsetY="5"  HeightRequest="150" Source="{toolkit:ImageResource Id=Smartmoveapp.Assets.labelled.DocImage.jpg}" ></ImageButton>
+    <StackLayout Spacing="30">
+     <StackLayout  HorizontalOptions="Center">
+      <Grid Grid.ColumnSpan="2" >
+       <Label 
+     VerticalOptions="Center"
+  
+     HorizontalOptions="Center"
+    HorizontalTextAlignment="End"
+     VerticalTextAlignment="Center"
+     Grid.Column="0" FontSize="15" FontFamily="PoppinsBlack" TextTransform="None" 
+                  
+                  TextColor="{StaticResource themecolorc}" Text="Subject"></Label>
+       <Button   Grid.Column="1"
+     VerticalOptions="Center"
+     HorizontalOptions="Center"
+       HeightRequest="40"
+                        BackgroundColor="{StaticResource themecolora}"
+                      
+     FontSize="15" FontFamily="Poppins" TextTransform="None"
+                       TextColor="{StaticResource themecolorc}" 
+       Text="{Binding Name}"></Button>
+      </Grid>
+      <StackLayout>
+       <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+      </StackLayout>
+     </StackLayout>
+     <StackLayout  HorizontalOptions="Center">
+      <Grid Grid.ColumnSpan="2" >
+       <Label 
+ VerticalOptions="Center"
+  
+ HorizontalOptions="Center"
+HorizontalTextAlignment="End"
+ VerticalTextAlignment="Center"
+ Grid.Column="0" FontSize="15" FontFamily="PoppinsBlack" TextTransform="None" 
+              
+              TextColor="{StaticResource themecolorc}" Text="Date of Upload"></Label>
+       <Label   Grid.Column="1"
+ VerticalOptions="Center"
+ HorizontalOptions="Center"
+   HeightRequest="40"
+                    BackgroundColor="{StaticResource themecolora}"
+                 HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+ FontSize="15" FontFamily="Poppins" TextTransform="None"
+                   TextColor="{StaticResource themecolorc}" 
+   Text="{Binding  InfoDetail.InfoSubject}"></Label>
+      </Grid>
+      <StackLayout>
+       <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+      </StackLayout>
+     </StackLayout>
+     <StackLayout  HorizontalOptions="Center">
+      <Grid Grid.ColumnSpan="2" >
+       <Label 
+     VerticalOptions="Center"
+  
+     HorizontalOptions="Center"
+    HorizontalTextAlignment="End"
+     VerticalTextAlignment="Center"
+     Grid.Column="0" FontSize="15" FontFamily="PoppinsBlack" TextTransform="None" 
+                  
+                  TextColor="{StaticResource themecolorc}" Text="Company"></Label>
+       <Label   Grid.Column="1"
+     VerticalOptions="Center"
+     HorizontalOptions="Center"
+       HeightRequest="40"
+                        BackgroundColor="{StaticResource themecolora}"
+                     HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+     FontSize="15" FontFamily="Poppins" TextTransform="None"
+                       TextColor="{StaticResource themecolorc}" 
+       Text="{Binding  InfoDetail.InfoSubject}"></Label>
+      </Grid>
+      <StackLayout>
+       <BoxView Margin="15,0,15,0"  WidthRequest="100" Style="{StaticResource Divider}"></BoxView>
+      </StackLayout>
+     </StackLayout>
+
+    </StackLayout>
+   </StackLayout>
+  </DataTemplate>
+ </ContentPage.Resources>
+    <ContentPage.Content>
+  <ScrollView Orientation="Vertical" > 
+        <StackLayout Spacing="5">
+            <Label Text="Information" TextDecorations="Underline" TextColor="{StaticResource themecolore}" FontFamily="PoppinsBlack" FontSize="Medium"    
+                HorizontalOptions="CenterAndExpand" />
+
+   <StackLayout Spacing="25" Padding="0,10,0,10" BackgroundColor="{StaticResource themecolora}" Margin="20" toolkit:ShadowEffect.Color="Black" toolkit:ShadowEffect.Opacity=".5" toolkit:ShadowEffect.OffsetX="5" toolkit:ShadowEffect.OffsetY="5">
+    <!--Address-->
+    <Grid ColumnDefinitions=".5*,.5*">
+     <Label  Style="{DynamicResource LabelKey}" Text="Address :">
+      
+     </Label>
+     <Label Style="{DynamicResource LabelValue}" Text="{Binding Path=Agent.Address}">
+      
+     </Label>
+     
+    </Grid>
+      <!--Phone-->
+    <Grid ColumnDefinitions=".5*,.5*">
+     <Label  Style="{DynamicResource LabelKey}" Text="Phone :">
+
+     </Label>
+     <Label Style="{DynamicResource LabelValue}" Text="{Binding Path=Agent.Phone}">
+
+     </Label>
+
+    </Grid>
+    <Grid ColumnDefinitions=".5*,.5*">
+     <Label  Style="{DynamicResource LabelKey}" Text="Email :">
+
+     </Label>
+     <Label Style="{DynamicResource LabelValue}" Text="{Binding Path=Agent.Email}">
+
+     </Label>
+
+    </Grid>
+    <Grid ColumnDefinitions=".5*,.5*">
+     <Label  Style="{DynamicResource LabelKey}" Text="Tel :">
+
+     </Label>
+     <Label Style="{DynamicResource LabelValue}" Text="{Binding Path=Agent.Tel}">
+
+     </Label>
+
+    </Grid>
+
+
+   </StackLayout>
+    <Label Text="Documents" TextDecorations="Underline"  TextColor="{StaticResource themecolore}" FontFamily="PoppinsBlack" FontSize="Medium"    
+        HorizontalOptions="CenterAndExpand" />
+    <StackLayout Orientation="Vertical" IsVisible="{Binding AgentDocuments,Converter={toolkit:IsNullOrEmptyConverter}}">
+     <Image WidthRequest="100" HeightRequest="100"  Margin="10" Source="{toolkit:ImageResource Id=Smartmoveapp.Assets.labelled.solid_file.png}"></Image>
+     <Label FontSize="15" TextColor="{StaticResource themecolorf}"  Text="This agent has no documents" HorizontalTextAlignment="Center" HorizontalOptions="Center"></Label>
+    </StackLayout>
+    <cardview:CardsView   ItemsSource="{Binding AgentDocuments}" IsVisible="{Binding AgentDocuments,Converter={toolkit:IsNotNullOrEmptyConverter}}" >
+     <cardview:CardsView.ItemTemplate>
+      <local:DocumentSelector  InvoiceTemplate="{StaticResource InvoiceTemplate}"  ContractTemplate="{StaticResource ContractTemplate}" InformationTemplate="{StaticResource InformationTemplate}"></local:DocumentSelector>
+     </cardview:CardsView.ItemTemplate>
+    </cardview:CardsView>
+    <StackLayout Spacing="10" HorizontalOptions="Center" Orientation="Horizontal">
+     <Label Text="Sensitive Info" TextDecorations="Underline" TextColor="{StaticResource themecolore}" FontFamily="PoppinsBlack" FontSize="Medium"    
+             HorizontalOptions="CenterAndExpand" />
+   <Button Clicked="ToggleVisibililty" WidthRequest="50" HeightRequest="50"  VerticalOptions="Start" Padding="0,0,0,20"  BackgroundColor="Transparent" FontFamily="materialicon" TextColor="{StaticResource themecolore}"  FontSize="25"  Text="{Binding VisibilityIcon}" ></Button>
+   </StackLayout>
+
+   <StackLayout IsVisible="{Binding IsSensitiveVIsible}" BackgroundColor="{StaticResource themecolora}" Padding="20" Margin="20" toolkit:ShadowEffect.Color="Black" toolkit:ShadowEffect.Opacity=".5" toolkit:ShadowEffect.OffsetX="5" toolkit:ShadowEffect.OffsetY="5">
+    <!--Address-->
+
+    <Label Style="{DynamicResource LabelValue}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.">
+
+    </Label>
+
+
+   </StackLayout>
+
+   </StackLayout>
+  </ScrollView>
+ </ContentPage.Content>
+</ContentPage>

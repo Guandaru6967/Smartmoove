@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:Smartmoveapp.Views"
+	   xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+	   NavigationPage.HasNavigationBar="True"
+             x:Class="Smartmoveapp.Views.FolderPage">
+ <NavigationPage.TitleView>
+  <StackLayout>
+   <Label Text="{Binding Path=Folder.FolderName}" FontSize="30" FontFamily="PoppinsBlack" TextColor="{StaticResource themecolorf}" Padding="0,0,25,0" HorizontalOptions="Center" HorizontalTextAlignment="Center"></Label>
+  </StackLayout>
+ </NavigationPage.TitleView>
+ <ContentPage.Resources>
+  <Style TargetType="ContentView">
+    <Setter Property="VisualStateManager.VisualStateGroups">
+     <VisualStateGroupList>
+      <VisualStateGroup x:Name="CommonStates">
+       <VisualState x:Name="Normal" />
+       <VisualState x:Name="Selected">
+        <VisualState.Setters>
+         <Setter Property="BackgroundColor"
+                                       Value="{StaticResource themecolord}"  />
+        </VisualState.Setters>
+       </VisualState>
+      </VisualStateGroup>
+     </VisualStateGroupList>
+    </Setter>
+   </Style>
+  <Style TargetType="StackLayout">
+   <Setter Property="VisualStateManager.VisualStateGroups">
+    <VisualStateGroupList>
+     <VisualStateGroup x:Name="CommonStates">
+      <VisualState x:Name="Normal" />
+      <VisualState x:Name="Selected">
+       <VisualState.Setters>
+        <Setter Property="BackgroundColor"
+                                      Value="{StaticResource themecolora}" />
+       </VisualState.Setters>
+      </VisualState>
+     </VisualStateGroup>
+    </VisualStateGroupList>
+   </Setter>
+  </Style>
+  <Style TargetType="Button" x:Key="MenuButton">
+   <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+   <Setter Property="WidthRequest" Value="20"></Setter>
+   <Setter Property="HeightRequest" Value="20"></Setter>
+   <Setter Property="TextColor" Value="{StaticResource themecolorf}"></Setter>
+   <Setter Property="FontSize" Value="20"></Setter>
+   <Setter Property="FontFamily" Value="materialicon"> </Setter>
+  </Style>
+  
+  <Style x:Key="GroupButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource themecolora}"> </Setter>
+            <Setter Property="TextColor" Value="{StaticResource themecolorf}"></Setter>
+            <Setter Property="FontFamily" Value="Poppins"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="FontAttributes" Value="None"></Setter>
+            <Setter Property="TextTransform" Value="None"></Setter>
+        </Style>
+        <ControlTemplate x:Key="GridView">
+            <FlexLayout>
+                <ImageButton>
+                    
+                </ImageButton>
+            </FlexLayout>
+        </ControlTemplate>
+        <Style x:Key="RadioGroup" TargetType="RadioButton">
+            <Setter Property="BackgroundColor" Value="{StaticResource themecolora}"></Setter>
+            <Setter Property="TextColor" Value="{StaticResource themecolorf}"></Setter>
+            <Setter Property="FontFamily" Value="Poppins"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="FontAttributes" Value="None"></Setter>
+            <Setter Property="xct:ShadowEffect.Color" Value="Black"></Setter>
+            <Setter Property="xct:ShadowEffect.OffsetX" Value="5"></Setter>
+            <Setter Property="xct:ShadowEffect.Radius" Value="5"></Setter>
+            <Setter Property="xct:ShadowEffect.Opacity" Value=".5"></Setter>
+            <Setter Property="xct:CornerRadiusEffect.CornerRadius" Value="5"></Setter>
+            <Setter Property="xct:ShadowEffect.OffsetY" Value="5"></Setter>
+            <Setter Property="TextTransform" Value="None"></Setter>
+        </Style>
+    </ContentPage.Resources>
+
+        <StackLayout  BackgroundColor="{StaticResource themecolora}">
+
+
+  <StackLayout Orientation="Horizontal" Spacing="40" xct:ShadowEffect.Color="Black" xct:ShadowEffect.Opacity=".6" xct:ShadowEffect.OffsetY="5" BackgroundColor="{StaticResource themecolorb}" Padding="10" Margin="0,0,0,20">
+
+ 
+   <ImageButton HorizontalOptions="Center" WidthRequest="50" HeightRequest="50" BackgroundColor="{StaticResource themecolora}" CornerRadius="25"  Padding="14" Source="{Binding DocumentViewIcon,Converter={xct:ImageResourceConverter}}"  Clicked="ToggleDocumentView"></ImageButton>
+
+   <ImageButton HorizontalOptions="Center" WidthRequest="50" HeightRequest="50" BackgroundColor="{StaticResource themecolora}" CornerRadius="25"  Padding="10" Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.add_document.png}"  Clicked="AddDocument"></ImageButton>
+
+   <ImageButton WidthRequest="50" HeightRequest="50" BackgroundColor="{StaticResource themecolora}" CornerRadius="25"  Padding="14" Source="{xct:ImageResource  Id=Smartmoveapp.Assets.labelled.search.png}" Clicked="ToggleSearch" >
+   </ImageButton>
+   <ImageButton HorizontalOptions="Center"  WidthRequest="50" HeightRequest="50" BackgroundColor="{StaticResource themecolora}" CornerRadius="25"   Padding="14" Source="{xct:ImageResource  Id=Smartmoveapp.Assets.labelled.sorting.png}" Clicked="SortAction">
+   </ImageButton>
+
+  </StackLayout>
+  <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal"  IsVisible="{Binding IsSearch}" Margin="0,-20,0,10">
+   <ImageButton HorizontalOptions="Center" Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.search.png}" Padding="5" WidthRequest="40" HeightRequest="40" VerticalOptions="End"></ImageButton>
+   <Entry  Placeholder="Search through your folders" 
+                              TextChanged="Entry_TextChanged"
+                              x:Name="FilterEntry"
+    HorizontalOptions="Center"
+                             BackgroundColor="{StaticResource themecolora}"
+                             TextColor="{StaticResource themecolorf}"
+                             Margin="20,0,0,0"
+	 VerticalTextAlignment="End"
+                            PlaceholderColor="{StaticResource themecolore}"
+                            FlowDirection="LeftToRight"
+                            FontSize="18"
+	 VerticalOptions="End"
+                             WidthRequest="250"
+                             IsPassword="False"
+                             FontFamily="Poppins"
+                             ></Entry>
+  </StackLayout>
+  <CollectionView      
+    IsVisible="{Binding IsListView}"
+    Margin="20,0,0,0"
+    VerticalOptions="Center" 
+    IsGrouped="True"
+    x:Name="listListing"
+ItemsSource="{Binding Path=SmartDocumentGroups}"
+		          HorizontalOptions="Center" 
+         SelectionChanged="OnSelect" 
+         SelectionMode="Single" >
+    <CollectionView.ItemsLayout >
+     <LinearItemsLayout ItemSpacing="10" Orientation="Vertical"  >
+
+     </LinearItemsLayout>
+    </CollectionView.ItemsLayout>
+    <CollectionView.ItemTemplate>
+    <DataTemplate>
+     <StackLayout HorizontalOptions="CenterAndExpand"  Orientation="Horizontal" Spacing="20" >
+      <VisualStateManager.VisualStateGroups>
+       <VisualStateGroup x:Name="CommonStates">
+        <VisualState x:Name="Normal">
+         <VisualState.Setters>
+	<Setter Property="BackgroundColor" Value="Transparent"></Setter>
+         </VisualState.Setters>
+         
+        </VisualState>
+        <VisualState x:Name="Selected">
+         <VisualState.Setters>
+	<Setter Property="BackgroundColor" Value="{StaticResource themecolorb}"></Setter>
+         </VisualState.Setters>
+
+        </VisualState>
+       </VisualStateGroup>
+      </VisualStateManager.VisualStateGroups>
+       <Label  FontSize="15"
+                                      HorizontalTextAlignment="Center"
+    VerticalTextAlignment="Center"
+                                       FontFamily="Poppins"
+                                      TextColor="{StaticResource themecolorc}"
+                                      Text="{Binding Name}">
+       </Label>
+       <Label FontSize="15"  Text="{Binding Created_Dt ,StringFormat='{0:dd/MM/yyyy}'}"   Padding="0,0,0,0"
+                                  VerticalOptions="Center"
+                                  HorizontalOptions="Center"
+                      TextTransform="Lowercase"
+ VerticalTextAlignment="Center"
+                                  HorizontalTextAlignment="Center"
+                         FontFamily="Poppins"
+                                  TextColor="{StaticResource themecolorf}"></Label>
+
+       
+
+
+
+      </StackLayout>
+ 
+    
+     </DataTemplate>
+    </CollectionView.ItemTemplate>
+   <CollectionView.GroupHeaderTemplate>
+    <DataTemplate>
+     <StackLayout>
+     <ffimage:CachedImage HorizontalOptions="Start" Source="{Binding Path=DocImage,Converter={xct:ImageResourceConverter}}" WidthRequest="40" HeightRequest="40" ></ffimage:CachedImage>
+     </StackLayout>
+    </DataTemplate>
+   </CollectionView.GroupHeaderTemplate>
+   </CollectionView>
+  <CollectionView x:Name="gridListing" HorizontalOptions="Center" 
+                            VerticalOptions="Center"
+	         IsVisible="{Binding IsGridView}"
+	         ItemsSource="{Binding Path=FolderDocuments}"
+                            SelectionChanged="OnSelect" 
+	            
+                            SelectionMode="Single" >
+  
+     <CollectionView.ItemsLayout >
+                    <GridItemsLayout Span="3" Orientation="Vertical" HorizontalItemSpacing="10" >
+
+                    </GridItemsLayout>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+    <DataTemplate>
+    
+      <ContentView x:Name="listcontent">
+      <VisualStateManager.VisualStateGroups>
+       <VisualStateGroup x:Name="CommonStates">
+        <VisualState x:Name="Normal">
+         <VisualState.Setters>
+	<Setter Property="BackgroundColor" Value="Transparent" />
+         </VisualState.Setters>
+        </VisualState>
+        <VisualState x:Name="Selected">
+         <VisualState.Setters>
+	<Setter Property="BackgroundColor" Value="{StaticResource themecolorb}" />
+         </VisualState.Setters>
+        </VisualState>
+       </VisualStateGroup>
+      </VisualStateManager.VisualStateGroups>
+                        <Grid  Margin="0,0,0,10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto">
+                                        
+                                    </RowDefinition>
+                                    <RowDefinition Height="Auto">
+                                        
+                                    </RowDefinition>
+                                    <RowDefinition Height="Auto">
+                                        
+                                    </RowDefinition>
+                                </Grid.RowDefinitions>
+                            <Image  Grid.Row="0"
+                                    xct:ShadowEffect.Color="Black"
+                                    xct:ShadowEffect.OffsetX="5"
+                                    xct:ShadowEffect.OffsetY="5"
+                                    xct:ShadowEffect.Opacity=".5"
+                                    HorizontalOptions="Center" Margin="0,0,0,0" 
+                                    VerticalOptions="Center"
+                                    WidthRequest="100"
+                                    HeightRequest="100"
+                                    BackgroundColor="{StaticResource themecolora}"
+                                    Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.DocImage.jpg}">
+
+                            </Image>
+        <Label Grid.Row="1"
+                                                FontSize="15"
+                                                FontAttributes="Bold"
+                                                HorizontalTextAlignment="Center"
+			          FontFamily="Poppins"
+                                                TextColor="{StaticResource themecolorc}"
+                                                Text="{Binding Name}">
+        </Label>
+                                <Label Grid.Row="2" FontSize="10"
+                                                   Padding="0,0,0,0"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="Center"
+                                       TextTransform="Lowercase"
+                                                   HorizontalTextAlignment="Center"
+			          FontFamily="Poppins"
+                                                   TextColor="{StaticResource themecolorf}"
+                                                   Text="{Binding DocType}"
+                                                FontAttributes="Bold" >
+
+                            </Label>
+
+                        </Grid>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+  <StackLayout IsVisible="{Binding FolderDocuments,Converter={xct:IsNullOrEmptyConverter}}">
+   <Label  Text="" HorizontalTextAlignment="Center" FontFamily="Poppins"></Label>
+   <Button></Button>
+  </StackLayout>
+            <FlexLayout Direction="RowReverse" BackgroundColor="#0000">
+   <ImageButton   Padding="10" CornerRadius="80"
+	       Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.add_document.png}"
+                                            WidthRequest="60"
+                                            HeightRequest="60"
+	BackgroundColor="{StaticResource themecolora}"
+                         xct:ShadowEffect.Color="Black"
+                        xct:ShadowEffect.OffsetX="5"
+	        Clicked="DocumentPage"
+                         xct:ShadowEffect.Opacity=".5"
+                         xct:ShadowEffect.OffsetY="5">
+    
+   </ImageButton>
+                <Button  Margin="10" Padding="0" CornerRadius="80" IsVisible="False"
+                                            FontFamily="materialicon"
+                                            TextTransform="None"
+                                            FontSize="30"
+                                            WidthRequest="60"
+                                            HeightRequest="60"
+                         xct:ShadowEffect.Color="Black"
+                        xct:ShadowEffect.OffsetX="5"
+		     
+                         xct:ShadowEffect.Opacity=".5"
+                         xct:ShadowEffect.OffsetY="5"
+                                            TextColor="{StaticResource themecolora}" BackgroundColor="{StaticResource themecolorf}"
+                                           Text="add">
+                    
+                </Button>
+            </FlexLayout>
+        </StackLayout>
+
+</ContentPage>

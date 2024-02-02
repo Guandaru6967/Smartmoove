@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	     Size="350,150"
+	   xmlns:toolkit="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+	     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Smartmoveapp.Views.Popups.FolderConfirmDelete">
+
+ <StackLayout HorizontalOptions="Center" Spacing="30" Margin="0,20,0,0">
+<Label  HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,20,0,0" Text="{Binding Path=Folder.FolderName,StringFormat='Are  you sure you want to delete folder {0}'}" TextColor="{StaticResource themecolorf}" FontFamily="Poppins"></Label>
+  <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+   <Button HorizontalOptions="Start" Text="Confirm" Clicked="DeleteFolder"  TextColor="{StaticResource themecolorf}" BorderColor="{StaticResource themecolorf}" FontFamily="PoppinsBlack" BackgroundColor="{StaticResource themecolora}"></Button>
+   <Button HorizontalOptions="End" Text="Cancel"  Clicked="CancelDelete" TextColor="{StaticResource themecolora}"  BorderColor="Transparent" FontFamily="PoppinsBlack" BackgroundColor="{StaticResource themecolorf}"></Button>
+  </StackLayout>
+ </StackLayout>
+</toolkit:Popup>

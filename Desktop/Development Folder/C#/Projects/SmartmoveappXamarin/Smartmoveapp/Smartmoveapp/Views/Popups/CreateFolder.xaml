@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	     Size="300,300"
+	     IsLightDismissEnabled="False"
+	     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+                 xmlns:toolkit="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             x:Class="Smartmoveapp.Views.Popups.CreateFolder">
+ <StackLayout HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     WidthRequest="350" 
+	    Spacing="10"
+                     HeightRequest="300"  MinimumHeightRequest="300"  BackgroundColor="{StaticResource themecolora}">
+  <Label Text="Create Folder" FontFamily="PoppinsBlack" FontSize="20" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource themecolorf}"></Label>
+    <Image Margin="5" HorizontalOptions="Center" Source="{xct:ImageResource Id=Smartmoveapp.Assets.labelled.foldericon.png}" WidthRequest="50 " HeightRequest="50"></Image>
+  <StackLayout Margin="10"  >
+   <Entry 
+                       PlaceholderColor="{StaticResource themecolore}"
+                       Placeholder="Folder name"
+                       x:Name="NameEntry"
+                       HorizontalTextAlignment="Center"
+                       FontSize="15"
+    HorizontalOptions="Center"
+	             FontFamily="Poppins"
+                       WidthRequest="200"
+                       BackgroundColor="{StaticResource themecolora}"
+                       TextColor="{x:StaticResource themecolorf}" >
+
+   </Entry>
+
+  </StackLayout>
+  <StackLayout Orientation="Horizontal"  HorizontalOptions="Center"   Spacing="20">
+   <Button 
+    Margin="5"
+                    HorizontalOptions="Center"
+                    WidthRequest="100"
+                    BackgroundColor="Transparent"
+                        FontSize="15"
+                        FontFamily="PoppinsBlack"
+                        Text="confirm"
+    BorderColor="{StaticResource themecolorf}" BorderWidth="5"
+                        FontAttributes="None"
+     Clicked="Button_Clicked"
+                        TextColor="{StaticResource themecolorf}"
+                    
+                        ></Button>
+   <Button 
+  Margin="5"
+                  HorizontalOptions="Center"
+                  WidthRequest="100"
+                      FontSize="15"
+    BackgroundColor="{x:StaticResource themecolorf}"
+                      FontFamily="PoppinsBlack"
+                      Text="cancel"
+  BorderColor="{StaticResource themecolorf}" BorderWidth="5"
+                      FontAttributes="None"
+    Clicked="Cancel"
+                      TextColor="{StaticResource themecolora}"
+                  
+                      ></Button>
+  </StackLayout>
+ </StackLayout>
+
+</toolkit:Popup>
